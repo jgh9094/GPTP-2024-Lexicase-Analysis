@@ -101,6 +101,7 @@ class EA:
 
         # create Pools
         with Pool(processes=self.cores) as pool:
+            # https://superfastpython.com/multiprocessing-pool-issue-tasks/#How_To_Choose_The_Method
             parents = pool.map(self.Lexicase, spawns)
 
         # print('parents:', parents)
