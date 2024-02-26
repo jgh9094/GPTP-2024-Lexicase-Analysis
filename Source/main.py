@@ -21,6 +21,7 @@
 import argparse
 from evolver import EA
 import time
+import os
 
 
 def main():
@@ -48,6 +49,10 @@ def main():
     print('savepath:',args.savepath)
     print('seed:',args.seed)
     print('cores:',args.cores)
+
+    # check if data directory already exists
+    if os.path.exists(args.savepath):
+        return 0
 
     # pass all needed args
     evolver = EA(args.seed, args.pop_size, args.diagnostic, args.cores, bool(args.redundancy), args.redundancy_prop)
