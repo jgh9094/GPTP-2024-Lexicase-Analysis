@@ -51,7 +51,7 @@ def main():
     print('cores:',args.cores)
 
     # check if data directory is not empty
-    if not os.listdir(args.savepath):
+    if os.listdir(args.savepath):
         print('EXPERIMENT REPLICATE IS ALREADY DONE')
         return 0
 
