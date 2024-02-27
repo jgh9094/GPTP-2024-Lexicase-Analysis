@@ -50,8 +50,9 @@ def main():
     print('seed:',args.seed)
     print('cores:',args.cores)
 
-    # check if data directory already exists
-    if os.path.exists(args.savepath):
+    # check if data directory is not empty
+    if not os.listdir(args.savepath):
+        print('EXPERIMENT REPLICATE IS ALREADY DONE')
         return 0
 
     # pass all needed args
