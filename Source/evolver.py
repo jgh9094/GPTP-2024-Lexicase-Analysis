@@ -64,6 +64,7 @@ class EA:
             # print('Generation:',gen)
             self.CurrentStats()
 
+
     #####################
     # EVALUATION STUFF
     #####################
@@ -87,6 +88,7 @@ class EA:
             self.pop[i].AggregateScore()
             self.pop[i].FindActivationGene()
 
+
     #####################
     # SELECTION STUFF
     #####################
@@ -103,6 +105,8 @@ class EA:
         with Pool(processes=self.cores) as pool:
             # https://superfastpython.com/multiprocessing-pool-issue-tasks/#How_To_Choose_The_Method
             parents = pool.map(self.Lexicase, spawns)
+
+            # make the data matrix before hand
 
         # print('parents:', parents)
 
@@ -206,6 +210,7 @@ class EA:
             org.SetGenotype(self.rng.uniform(0.0,1.0,self.dimensionality))
             self.pop.append(org)
 
+
     #####################
     # DATA TRACKING STUFF
     #####################
@@ -249,11 +254,11 @@ class EA:
         return cur_best
 
     # find if satisfactory solution has been found yet
-    def SatisfactorySolution(self) -> bool:
+    def SatisfactorySolution(self) -> int:
         for org in self.pop:
             if org.GetCount() == self.dimensionality:
-                return True
-        return False
+                return 1
+        return 0
 
     # calculate population-level activation gene coverage
     def ActivationGeneCoverage(self) -> int:
@@ -274,12 +279,14 @@ class EA:
                     break
         return int(count)
 
+
     #####################
     # SAVING DATA HELPERS
     #####################
 
     def Save(self, dir: str):
         pd.DataFrame(self.data_dict).to_csv(dir + 'data.csv', index=False)
+
 
     #####################
     # PRINTING HELPERS

@@ -71,6 +71,7 @@ class Org:
         self.count = np.sum(self.satisfactory_traits)
         self.counted = True
 
+
     #####################
     # GETTERS
     #####################
@@ -113,6 +114,7 @@ class Org:
         assert self.activation_gene != self.dimensionality
         return self.activation_gene
 
+
     #####################
     # SETTERS
     #####################
@@ -153,6 +155,7 @@ class Org:
         assert self.dimensionality > 0
         self.agene_set = True
         self.activation_gene = cp.deepcopy(s_)
+
 
     #####################
     # HELPERS
