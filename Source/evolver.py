@@ -219,7 +219,7 @@ class EA:
     def SetDataTracking(self, diagnostic: int) -> None:
         # exploitation
         if diagnostic == 0 or diagnostic == 1:
-            self.data_tracking_dict = {'performance': self.Performance,'satisfactory_solution': self.SatisfactorySolution, 'satisfactory_count': self.SatisfactoryCount()}
+            self.data_tracking_dict = {'performance': self.Performance,'satisfactory_solution': self.SatisfactorySolution, 'satisfactory_count': self.SatisfactoryCount}
         # contradictory
         elif diagnostic == 2:
             self.data_tracking_dict = {'performance': self.Performance,'activation_coverage': self.ActivationGeneCoverage,
