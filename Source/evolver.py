@@ -219,7 +219,7 @@ class EA:
     def SetDataTracking(self, diagnostic: int) -> None:
         # exploitation
         if diagnostic == 0 or diagnostic == 1:
-            self.data_tracking_dict = {'performance': self.Performance,'satisfactory_solution': self.SatisfactorySolution}
+            self.data_tracking_dict = {'performance': self.Performance,'satisfactory_solution': self.SatisfactorySolution, 'satisfactory_count': self.SatisfactoryCount()}
         # contradictory
         elif diagnostic == 2:
             self.data_tracking_dict = {'performance': self.Performance,'activation_coverage': self.ActivationGeneCoverage,
@@ -279,6 +279,14 @@ class EA:
                     break
         return int(count)
 
+    # find solution with largest set of satisfactory traits
+    def SatisfactoryCount(self) -> int:
+        count = 0
+        # go through each objective
+        for org in self.pop:
+            if count < org.GetCount():
+                count = org.GetCount()
+        return int(count)
 
     #####################
     # SAVING DATA HELPERS
