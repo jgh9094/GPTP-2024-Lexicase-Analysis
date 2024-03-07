@@ -1,9 +1,9 @@
 #!/bin/bash -l
 
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=20
-#SBATCH --array=1-100%30
-#SBATCH -t 120:00:00
+#SBATCH --cpus-per-task=10
+#SBATCH --array=1-100%40
+#SBATCH -t 72:00:00
 #SBATCH --mem=5GB
 #SBATCH --job-name=con-100
 #SBATCH -p defq,moore
@@ -92,4 +92,4 @@ python /home/hernandezj45/Repos/GPTP-2024-Lexicase-Analysis/Source/main.py \
 --redundancy_prop ${REDUNDANCY_PROP}  \
 --seed ${SEED} \
 --savepath ${DATA_DIR} \
---cores 20
+--cores 10
