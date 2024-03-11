@@ -1,3 +1,11 @@
+#####################################################################################################
+#
+# Org class for holding genotype a phenotype.
+# Also calculates genotype/phenotype metrics for analysis.
+#
+# python3
+#####################################################################################################
+
 import numpy as np
 import copy as cp
 from typeguard import typechecked
