@@ -25,13 +25,13 @@ class Diagnostic:
     # takes in a genotype and applies appropriate genotype transformation
     def transform(self, genotype: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
         if self.diagnostic == 0:
-            return self.exploitation_rate(genotype)
+            return np.array(self.exploitation_rate(genotype))
         elif self.diagnostic == 1:
-            return self.ordered_exploitation(genotype)
+            return np.array(self.ordered_exploitation(genotype))
         elif self.diagnostic == 2:
-            return self.contradictory_objectives(genotype)
+            return np.array(self.contradictory_objectives(genotype))
         elif self.diagnostic == 3:
-            return self.multipath_exploration(genotype)
+            return np.array(self.multipath_exploration(genotype))
 
     def exploitation_rate(self, genotype: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
         phenotype = cp.deepcopy(genotype)
