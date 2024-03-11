@@ -34,11 +34,6 @@ def main():
     parser.add_argument("--cores",            default=1,      type=int)
     parser.add_argument("--savepath",         default="./",   type=str)
 
-    # Check if the directory doesn't exist already
-    if os.path.exists(args.savepath):
-        print('REPLICATE ALREADY DONE')
-        return
-
     # Parse all the arguments and print
     args = parser.parse_args()
     print('diagnostic:',args.diagnostic)
@@ -48,6 +43,11 @@ def main():
     print('savepath:',args.savepath)
     print('seed:',args.seed)
     print('cores:',args.cores)
+
+    # Check if the directory doesn't exist already
+    if os.path.exists(args.savepath):
+        print('REPLICATE ALREADY DONE')
+        return
 
     # total number of evaluations allowed for this work
     evaluations = 1500000000
