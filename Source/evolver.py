@@ -12,7 +12,9 @@ from typeguard import typechecked
 from typing import List
 import numpy.typing as npt
 import copy as cp
+# from multiprocessing import Pool, get_start_method
 from multiprocessing import Pool
+import multiprocessing as mp
 import pandas as pd
 
 MUTATION_PROB=0.007
@@ -34,6 +36,9 @@ class EA:
 
         # set up test cases
         self.test_cases = self.SetTestCases(redundancy, redundancy_prop)
+
+        # mp
+        mp.set_start_method('fork')
 
     # 3 step EA
     def Evolve(self, max_gen):
@@ -97,20 +102,16 @@ class EA:
     def Selection(self) -> List[int]:
         parents = []
 
-        # create new spanw rngs
-        # https://numpy.org/doc/stable/reference/random/parallel.html
-        spawns = self.rng.spawn(self.pop_size)
+        if 1 < self.cores:
+            # create new spanw rngs
+            # https://numpy.org/doc/stable/reference/random/parallel.html
+            spawns = self.rng.spawn(self.pop_size)
 
-        # create Pools
-        with Pool(processes=self.cores) as pool:
-            # https://superfastpython.com/multiprocessing-pool-issue-tasks/#How_To_Choose_The_Method
-            parents = pool.map(self.Lexicase, spawns)
-
-            # make the data matrix before hand
-
-        # print('parents:', parents)
-
-        return parents
+            with Pool(processes=self.cores) as pool:
+                # https://superfastpython.com/multiprocessing-pool-issue-tasks/#How_To_Choose_The_Method
+                return pool.map(self.Lexicase, spawns)
+        else:
+            return [self.Lexicase(self.rng) for _ in range(self.pop_size)]
 
     # standard lexicase
     def Lexicase(self, rng_: np.random.Generator) -> int:
