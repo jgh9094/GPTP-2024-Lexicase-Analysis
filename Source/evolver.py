@@ -57,7 +57,7 @@ class EA:
             # Step 1
             self.Evaluate()
             # Step 2
-            self.RecordData(gen)
+            self.RecordData(gen, evaluations)
             # Step 3
             parents = self.Selection()
             # Step 4
