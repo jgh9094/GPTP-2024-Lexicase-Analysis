@@ -1,0 +1,110 @@
+#!/bin/bash -l
+
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=2
+#SBATCH --array=1-300%50
+#SBATCH -t 120:00:00
+#SBATCH --mem=3GB
+#SBATCH --job-name=exp
+#SBATCH -p moore,defq
+#SBATCH --exclude=esplhpc-cp040
+
+##################################
+# Setup environment
+##################################
+
+source /home/hernandezj45/anaconda3/etc/profile.d/conda.sh
+conda activate gptp-2024
+
+##################################
+# Setup random seed info
+##################################
+PRELIM_OFFSET=0
+EXPERIMENT_OFFSET=0
+SEED=$((SLURM_ARRAY_TASK_ID + EXPERIMENT_OFFSET + PRELIM_OFFSET))
+
+##################################
+# Treatments
+##################################
+
+EXPLOITATION_RATE__MIN=1
+EXPLOITATION_RATE__MAX=50
+
+CONTRADICTORY_0__MIN=51
+CONTRADICTORY_0__MAX=100
+
+CONTRADICTORY_10__MIN=101
+CONTRADICTORY_10__MAX=150
+
+CONTRADICTORY_50__MIN=151
+CONTRADICTORY_50__MAX=200
+
+CONTRADICTORY_100__MIN=201
+CONTRADICTORY_100__MAX=251
+
+CONTRADICTORY_500__MIN=251
+CONTRADICTORY_500__MAX=300
+
+##################################
+# Conditions
+##################################
+
+if [ ${SLURM_ARRAY_TASK_ID} -ge ${EXPLOITATION_RATE__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${EXPLOITATION_RATE__MAX} ] ; then
+  DIAGNOSTIC=0
+  REDUNDANCY=0
+  REDUNDANCY_PROP=0.0
+  REPLICATE_DIR=Exploitation/${SEED}/
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_0__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_0__MAX} ] ; then
+  DIAGNOSTIC=2
+  REDUNDANCY=0
+  REDUNDANCY_PROP=0.0
+  REPLICATE_DIR=Contradictory-0/${SEED}/
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_10__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_10__MAX} ] ; then
+  DIAGNOSTIC=2
+  REDUNDANCY=1
+  REDUNDANCY_PROP=0.10
+  REPLICATE_DIR=Contradictory-10/${SEED}/
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_50__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_50__MAX} ] ; then
+  DIAGNOSTIC=2
+  REDUNDANCY=1
+  REDUNDANCY_PROP=0.50
+  REPLICATE_DIR=Contradictory-50/${SEED}/
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_100__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_100__MAX} ] ; then
+  DIAGNOSTIC=2
+  REDUNDANCY=1
+  REDUNDANCY_PROP=1.0
+  REPLICATE_DIR=Contradictory-100/${SEED}/
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_500__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_500__MAX} ] ; then
+  DIAGNOSTIC=2
+  REDUNDANCY=1
+  REDUNDANCY_PROP=5.0
+  REPLICATE_DIR=Contradictory-500/${SEED}/
+
+else
+  echo "${SEED} from ${PROBLEM} failed to launch" >> /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/failtolaunch.txt
+fi
+
+##################################
+# Data dump directory
+##################################
+
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/${REPLICATE_DIR}
+
+##################################
+# REMAINING PARAMS
+##################################
+POP_SIZE=50
+
+python /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main.py \
+--diagnostic ${DIAGNOSTIC} \
+--pop_size ${POP_SIZE} \
+--redundancy ${REDUNDANCY} \
+--redundancy_prop ${REDUNDANCY_PROP}  \
+--seed ${SEED} \
+--cores 2 \
+--savepath ${DATA_DIR}
