@@ -20,7 +20,7 @@ class Diagnostic:
         if 0 <= diagnostic <= 3:
             self.diagnostic = diagnostic
         else:
-            sys.exit('UNKNOWN DIAGNOSTIC IN DIAGNOSTIC CLASS CONSTRUCTOR')
+            sys.exit('DIAGNOSTIC CLASS: UNKNOWN DIAGNOSTIC IN CONSTRUCTOR')
 
     # takes in a genotype and applies appropriate genotype transformation
     def transform(self, genotype: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
