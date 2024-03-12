@@ -2,10 +2,10 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=2
-#SBATCH --array=1-300%50
-#SBATCH -t 120:00:00
+#SBATCH --array=1-300%100
+#SBATCH -t 96:00:00
 #SBATCH --mem=3GB
-#SBATCH --job-name=exp
+#SBATCH --job-name=p50
 #SBATCH -p moore,defq
 #SBATCH --exclude=esplhpc-cp040
 
@@ -90,17 +90,17 @@ else
 fi
 
 ##################################
-# Data dump directory
-##################################
-
-DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/${REPLICATE_DIR}
-
-##################################
 # REMAINING PARAMS
 ##################################
 POP_SIZE=50
 
-python /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main.py \
+##################################
+# Data dump directory
+##################################
+
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/Pop_${POP_SIZE}/${REPLICATE_DIR}
+
+python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main.py \
 --diagnostic ${DIAGNOSTIC} \
 --pop_size ${POP_SIZE} \
 --redundancy ${REDUNDANCY} \
