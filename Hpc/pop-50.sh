@@ -19,9 +19,8 @@ conda activate gptp-2024
 ##################################
 # Setup random seed info
 ##################################
-PRELIM_OFFSET=0
 EXPERIMENT_OFFSET=0
-SEED=$((SLURM_ARRAY_TASK_ID + EXPERIMENT_OFFSET + PRELIM_OFFSET))
+SEED=$((SLURM_ARRAY_TASK_ID + EXPERIMENT_OFFSET))
 
 ##################################
 # Treatments
