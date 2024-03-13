@@ -153,8 +153,9 @@ class EA:
             return base
         # sample extra test cases per objective given by prop * dimensionality
         else:
-            extra = int(prop * self.dimensionality) + self.dimensionality
-            return self.rng.choice(base, size=extra, replace=True)
+            extra = int(prop * self.dimensionality)
+            sample = self.rng.choice(base, size=extra, replace=True)
+            return np.concatenate((base, sample))
 
 
     #####################
