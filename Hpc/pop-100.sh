@@ -2,11 +2,11 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=3
-#SBATCH --array=1-300%66
-#SBATCH -t 96:00:00
+#SBATCH --array=1-300%50
+#SBATCH -t 120:00:00
 #SBATCH --mem=2GB
 #SBATCH --job-name=p100
-#SBATCH -p moore,defq
+#SBATCH -p defq,moore
 #SBATCH --exclude=esplhpc-cp040
 
 ##################################
