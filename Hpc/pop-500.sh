@@ -1,11 +1,11 @@
 #!/bin/bash -l
 
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=10
-#SBATCH --array=1-300%20
+#SBATCH --cpus-per-task=6
+#SBATCH --array=1-300%30
 #SBATCH -t 96:00:00
 #SBATCH --mem=3GB
-#SBATCH --job-name=p5k
+#SBATCH --job-name=p500
 #SBATCH -p defq,moore
 #SBATCH --exclude=esplhpc-cp040
 
