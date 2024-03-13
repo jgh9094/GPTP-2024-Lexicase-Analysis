@@ -2,7 +2,7 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
-#SBATCH --array=1-300%30
+#SBATCH --array=1-300%33
 #SBATCH -t 96:00:00
 #SBATCH --mem=3GB
 #SBATCH --job-name=p500
@@ -105,5 +105,5 @@ python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/S
 --redundancy ${REDUNDANCY} \
 --redundancy_prop ${REDUNDANCY_PROP}  \
 --seed ${SEED} \
---cores 10 \
+--cores 6 \
 --savepath ${DATA_DIR}

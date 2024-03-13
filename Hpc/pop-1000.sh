@@ -5,7 +5,7 @@
 #SBATCH --array=1-300%20
 #SBATCH -t 96:00:00
 #SBATCH --mem=3GB
-#SBATCH --job-name=p5k
+#SBATCH --job-name=p1k
 #SBATCH -p defq,moore
 #SBATCH --exclude=esplhpc-cp040
 
