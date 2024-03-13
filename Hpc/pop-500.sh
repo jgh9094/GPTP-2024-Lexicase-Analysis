@@ -1,12 +1,12 @@
 #!/bin/bash -l
 
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=3
-#SBATCH --array=1-300%60
+#SBATCH --cpus-per-task=10
+#SBATCH --array=1-300%20
 #SBATCH -t 96:00:00
-#SBATCH --mem=2GB
-#SBATCH --job-name=p100
-#SBATCH -p moore,defq
+#SBATCH --mem=3GB
+#SBATCH --job-name=p5k
+#SBATCH -p defq,moore
 #SBATCH --exclude=esplhpc-cp040
 
 ##################################
@@ -19,7 +19,7 @@ conda activate gptp-2024
 ##################################
 # Setup random seed info
 ##################################
-EXPERIMENT_OFFSET=300
+EXPERIMENT_OFFSET=600
 SEED=$((SLURM_ARRAY_TASK_ID + EXPERIMENT_OFFSET))
 
 ##################################
@@ -91,7 +91,7 @@ fi
 ##################################
 # REMAINING PARAMS
 ##################################
-POP_SIZE=100
+POP_SIZE=1000
 
 ##################################
 # Data dump directory
@@ -105,5 +105,5 @@ python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/S
 --redundancy ${REDUNDANCY} \
 --redundancy_prop ${REDUNDANCY_PROP}  \
 --seed ${SEED} \
---cores 2 \
+--cores 10 \
 --savepath ${DATA_DIR}
