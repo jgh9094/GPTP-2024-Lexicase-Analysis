@@ -2,7 +2,7 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
-#SBATCH --array=1-300%10
+#SBATCH --array=1-300%20
 #SBATCH -t 96:00:00
 #SBATCH --mem=3GB
 #SBATCH --job-name=p5k
