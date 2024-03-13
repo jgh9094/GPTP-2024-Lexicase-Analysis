@@ -2,7 +2,7 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
-#SBATCH --array=1-300%33
+#SBATCH --array=1-300%20
 #SBATCH -t 96:00:00
 #SBATCH --mem=3GB
 #SBATCH --job-name=p500
@@ -91,7 +91,7 @@ fi
 ##################################
 # REMAINING PARAMS
 ##################################
-POP_SIZE=1000
+POP_SIZE=500
 
 ##################################
 # Data dump directory
