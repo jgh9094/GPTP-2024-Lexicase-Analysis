@@ -44,7 +44,7 @@ def main():
     print('seed:',args.seed)
     print('cores:',args.cores)
 
-    # Check if the directory doesn't exist already
+    # Check if the directory exist already
     if os.path.exists(args.savepath):
         print('REPLICATE ALREADY DONE')
         return
