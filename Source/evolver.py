@@ -150,11 +150,13 @@ class EA:
         base = np.arange(0,self.dimensionality)
         # one test case per objective
         if not flag:
+            print('# of test cases:', len(base))
             return base
         # sample extra test cases per objective given by prop * dimensionality
         else:
             extra = int(prop * self.dimensionality)
             sample = self.rng.choice(base, size=extra, replace=True)
+            print('# of test cases:', len(np.concatenate((base, sample))))
             return np.concatenate((base, sample))
 
 
