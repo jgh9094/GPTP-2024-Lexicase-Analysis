@@ -96,10 +96,10 @@ def CheckDir(dir,exp,dump):
     # save the data
     if exp_acro == 'exp':
         df = pd.DataFrame(performance_tracker)
-        df.to_csv(path_or_buf=dump+exp_acro+'.csv', index=False)
+        df.to_csv(path_or_buf=dump+exp_acro+'-ot.csv', index=False)
     else:
         df = pd.DataFrame(contradictory_tracker)
-        df.to_csv(path_or_buf=dump+exp_acro+'.csv', index=False)
+        df.to_csv(path_or_buf=dump+exp_acro+'-ot.csv', index=False)
 
 
 
