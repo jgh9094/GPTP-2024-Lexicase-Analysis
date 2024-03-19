@@ -86,7 +86,7 @@ def CheckDir(dir,exp):
             lexicase_success[pop_size].append(seed)
 
     SortTrackers()
-    
+
     print()
     print('#### SUMMARY #####')
     print()
@@ -94,9 +94,9 @@ def CheckDir(dir,exp):
         print(pop_size,':',len(tracker))
         print('seeds:',tracker.sort())
         print('does_not_exist:', len(does_not_exist[pop_size]))
-        print('does_not_exist:', does_not_exist[pop_size].sort())
+        print('does_not_exist:', does_not_exist[pop_size])
         print('evals_not_met:', len(evals_not_met[pop_size]))
-        print('evals_not_met:', evals_not_met[pop_size].sort())
+        print('evals_not_met:', evals_not_met[pop_size])
         print()
     print('######################################')
 
