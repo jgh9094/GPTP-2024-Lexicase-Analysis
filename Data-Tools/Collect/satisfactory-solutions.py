@@ -12,6 +12,10 @@ def SatifactoryFoundAt(file_name):
     # create pandas data frame of entire csv
     df = pd.read_csv(file_name)
     df = df[df['satisfactory_solution'] == 1]
+
+    if df.empty:
+        return not_found_eval
+
     return df.iloc[0]['Eval']
 
 def CheckDir(dir,exp,dump):
