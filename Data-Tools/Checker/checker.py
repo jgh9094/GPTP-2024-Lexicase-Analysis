@@ -25,9 +25,6 @@ def CheckDir(dir,exp):
     # check if data dir exists
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
-    # check that experiment directory exists
-    if not os.path.isdir(dir + exp):
-        sys.exit('EXPERIMENT DIRECTORY DOES NOT EXIST')
 
     exp_dir = dir + exp
     # Iterating through both keys and values
