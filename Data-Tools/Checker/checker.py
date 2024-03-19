@@ -3,7 +3,7 @@ import argparse
 import sys
 import numpy as np
 
-lexicase_configs = {'POP_50':[] ,'POP_100':[] ,'POP_500':[] ,'POP_1000':[] ,'POP_5000':[]}
+lexicase_configs = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 
 def ExperimentDir(exp):
     if exp == 0:
