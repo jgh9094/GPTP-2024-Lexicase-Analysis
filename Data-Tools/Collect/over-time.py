@@ -10,6 +10,38 @@ lexicase_resolution = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000':
 performance_tracker = {'pop_size': [] ,'performance': [], 'eval': []}
 contradictory_tracker = {'pop_size': [] ,'activation_coverage': [], 'satisfactory_coverage': [], 'eval': []}
 
+def ExperimentDir(exp):
+    if exp == 0:
+        return 'Exploitation/'
+    elif exp == 1:
+        return 'Contradictory-0/'
+    elif exp == 2:
+        return 'Contradictory-10/'
+    elif exp == 3:
+        return 'Contradictory-50/'
+    elif exp == 4:
+        return 'Contradictory-100/'
+    elif exp == 5:
+        return 'Contradictory-500/'
+    else:
+        sys.exit('UTILS: INVALID EXPERIMENT DIR TO FIND')
+
+def ExperimentAcro(exp):
+    if exp == 0:
+        return 'exp'
+    elif exp == 1:
+        return 'con-0/'
+    elif exp == 2:
+        return 'con-10/'
+    elif exp == 3:
+        return 'con-50/'
+    elif exp == 4:
+        return 'con-100/'
+    elif exp == 5:
+        return 'con-500/'
+    else:
+        sys.exit('UTILS: INVALID EXPERIMENT DIR TO FIND')
+
 def PerformanceOverTime(file_name, pop_size):
     # create pandas data frame of entire csv
     df = pd.read_csv(file_name)
@@ -38,6 +70,9 @@ def CheckDir(dir,exp,dump):
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
+    exp = ExperimentDir(exp)
+    exp_acro = ExperimentAcro(exp)
+
     # Iterating through both keys and values
     for pop_size, size in lexicase_pop_size.items():
         # experiment dir
@@ -57,7 +92,7 @@ def CheckDir(dir,exp,dump):
             file_dir = seed_dir + '/data.csv'
 
             # record data for exploitation diagnostics
-            if exp == 'exp':
+            if exp_acro == 'exp':
                 PerformanceOverTime(file_dir, pop_size)
 
 
@@ -68,12 +103,12 @@ def main():
     parser = argparse.ArgumentParser()
     # where to save the results/models
     parser.add_argument("-d", "--data_dir", default="./", type=str)
-    parser.add_argument("-e", "--experiment", default="exp", type=str)
+    parser.add_argument("-e", "--experiment", default=0, type=int)
     parser.add_argument("-du", "--dump_dir", default="./", type=str)
 
     args = parser.parse_args()
     print('data_dir:', args.data_dir)
-    print('experiment:', args.experiment)
+    print('experiment:', ExperimentDir(args.experiment))
     print('dump_dir:', args.dump_dir)
     print()
 
