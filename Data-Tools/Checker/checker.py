@@ -10,12 +10,12 @@ does_not_exist = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5
 evals_not_met = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 
 def SortTrackers():
-    for pop_size, tracker in lexicase_success.items():
-        tracker = sorted(tracker)
-    for pop_size, tracker in does_not_exist.items():
-        tracker = sorted(tracker)
-    for pop_size, tracker in evals_not_met.items():
-        tracker = sorted(tracker)
+    for pop_size in lexicase_success:
+        lexicase_success[pop_size].sort()
+    for pop_size in does_not_exist:
+        does_not_exist[pop_size].sort()
+    for pop_size in evals_not_met:
+        evals_not_met[pop_size].sort()
 
 
 def ExperimentDir(exp):
