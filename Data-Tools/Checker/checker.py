@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 evaluations = 1500000000
+replicates = 50
 lexicase_success = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 does_not_exist = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 evals_not_met = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
@@ -92,6 +93,10 @@ def CheckDir(dir,exp):
     print()
     for pop_size, tracker in lexicase_success.items():
         print(pop_size,':',len(tracker))
+
+        if replicates == len(tracker):
+            continue
+
         print('success seeds:',tracker)
         print('file doesnt exist:', len(does_not_exist[pop_size]))
         print('file doesnt exist:', does_not_exist[pop_size])
