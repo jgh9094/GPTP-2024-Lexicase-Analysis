@@ -76,7 +76,9 @@ def CheckDir(dir,exp):
 
             lexicase_success[pop_size].append(seed)
 
-
+    print()
+    print('#### SUMMARY #####')
+    print()
     for pop_size, tracker in lexicase_success.items():
         print(pop_size,':',len(tracker))
         print('seeds:',tracker)
@@ -85,6 +87,7 @@ def CheckDir(dir,exp):
         print('evals_not_met:', len(evals_not_met[pop_size]))
         print('evals_not_met:', evals_not_met[pop_size])
         print()
+    print('######################################')
 
 def main():
     # read in arguements
