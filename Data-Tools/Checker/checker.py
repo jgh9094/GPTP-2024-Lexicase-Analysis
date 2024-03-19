@@ -3,7 +3,7 @@ import argparse
 import sys
 import numpy as np
 
-GENERATIONS = 200
+lexicase_configs = {'POP_50':[] ,'POP_100':[] ,'POP_500':[] ,'POP_1000':[] ,'POP_5000':[]}
 
 def ExperimentDir(exp):
     if exp == 0:
@@ -30,12 +30,19 @@ def CheckDir(dir,exp):
         sys.exit('EXPERIMENT DIRECTORY DOES NOT EXIST')
 
     exp_dir = dir + exp
-    for rep_dir, _, _ in os.walk(exp_dir):
-            # skip root dir
-            if rep_dir == exp_dir:
-                continue
+    # Iterating through both keys and values
+    for pop_size, tracker in lexicase_configs.items():
+        if not os.path.isdir(exp_dir + pop_size):
+            tracker.append('NOT CREATED')
+            continue
 
-            print('rep_dir:',rep_dir)
+        rep_dir = exp_dir + pop_size
+        for seed_dir, _, _ in os.walk(rep_dir):
+                # skip root dir
+                if rep_dir == seed_dir:
+                    continue
+
+                print('seed_dir:',seed_dir)
 
 
 def main():
