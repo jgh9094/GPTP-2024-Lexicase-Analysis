@@ -26,11 +26,13 @@ def CheckDir(dir,exp):
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
-    exp_dir = dir + exp
     # Iterating through both keys and values
     for pop_size, tracker in lexicase_configs.items():
-        print('Checking:',exp_dir + pop_size)
-        if not os.path.isdir(exp_dir + pop_size):
+        # experiment dir
+        exp_dir = dir + pop_size + exp
+
+        print('Checking:',exp_dir)
+        if not os.path.isdir(exp_dir):
             tracker.append('NOT CREATED')
             continue
 
