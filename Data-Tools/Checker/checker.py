@@ -11,11 +11,11 @@ evals_not_met = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_50
 
 def SortTrackers():
     for pop_size, tracker in lexicase_success.items():
-        tracker.sort()
+        tracker = sorted(tracker)
     for pop_size, tracker in does_not_exist.items():
-        tracker.sort()
+        tracker = sorted(tracker)
     for pop_size, tracker in evals_not_met.items():
-        tracker.sort()
+        tracker = sorted(tracker)
 
 
 def ExperimentDir(exp):
