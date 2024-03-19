@@ -5,8 +5,7 @@ import numpy as np
 import pandas as pd
 
 resolution = 1000000
-# lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
-lexicase_pop_size = {'Pop_100': 100 }
+lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
 lexicase_resolution = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 1}
 performance_tracker = {'pop_size': [] ,'performance': [], 'eval': []}
 contradictory_tracker = {'pop_size': [] ,'activation_coverage': [], 'satisfactory_coverage': [], 'eval': []}
