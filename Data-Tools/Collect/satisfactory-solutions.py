@@ -15,7 +15,7 @@ def SatifactoryFoundAt(file_name):
 
     print(df)
     print('eval:', df['Eval'])
-    print(type(df['Eval']))
+    print(type(df.iloc[0]['Eval']))
 
     exit()
 
