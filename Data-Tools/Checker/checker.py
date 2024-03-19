@@ -4,6 +4,7 @@ import sys
 import numpy as np
 
 lexicase_configs = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
+does_not_exist = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 
 def ExperimentDir(exp):
     if exp == 0:
@@ -31,7 +32,7 @@ def CheckDir(dir,exp):
         # experiment dir
         exp_dir = dir + pop_size + '/' + exp
 
-        print('Checking:',exp_dir)
+        print('In:',exp_dir)
         if not os.path.isdir(exp_dir):
             tracker.append('NOT CREATED')
             continue
@@ -42,7 +43,16 @@ def CheckDir(dir,exp):
             if exp_dir == seed_dir:
                 continue
 
-            print('seed_dir:',seed_dir)
+            file_dir = seed_dir + '/data.csv'
+            print('file_dir:', file_dir)
+            print('seed:', seed_dir.split('/')[-1].split('-')[0])
+            return
+
+            # now check if the data file exists in full data director
+            if not os.path.isfile(file_dir):
+                seed = 0
+                does_not_exist[pop_size].append(seed)
+                continue
 
     for pop_size, tracker in lexicase_configs.items():
         print(pop_size,':',tracker)
