@@ -59,8 +59,8 @@ def PerformanceOverTime(file_name, pop_size):
     # record contradictory data pop_size
     performance_tracker['pop_size'] += [pop_size] * int(len(df['performance']) + 1)
 
-    for key, value in performance_tracker.items():
-        print(key, len(value))
+    # for key, value in performance_tracker.items():
+    #     print(key, len(value))
 
     return
 
@@ -94,6 +94,13 @@ def CheckDir(dir,exp,dump):
             if exp_acro == 'exp':
                 PerformanceOverTime(file_dir, pop_size)
 
+    # save the data
+    if exp_acro == 'exp':
+        df = pd.DataFrame(performance_tracker)
+        df.to_csv(path_or_buf=dump+exp_acro+'.csv', index=False)
+    else:
+        df = pd.DataFrame(contradictory_tracker)
+        df.to_csv(path_or_buf=dump+exp_acro+'.csv', index=False)
 
 
 
