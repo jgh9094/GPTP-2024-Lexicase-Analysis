@@ -2,9 +2,12 @@ import os
 import argparse
 import sys
 import numpy as np
+import pandas as pd
 
-lexicase_configs = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
+evaluations = 1500000000
+lexicase_success = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 does_not_exist = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
+evals_not_met = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 
 def ExperimentDir(exp):
     if exp == 0:
@@ -22,13 +25,28 @@ def ExperimentDir(exp):
     else:
         sys.exit('UTILS: INVALID EXPERIMENT DIR TO FIND')
 
+def CheckEvaluations(file_name):
+    # create pandas data frame of entire csv
+    try:
+        df = pd.read_csv(file_name)
+    except pd.errors.EmptyDataError:
+        df = pd.DataFrame()
+
+    # return not met
+    if(df.shape[0] == 0):
+        return 0
+
+    gens = df['Eval'].to_list()
+
+    return gens[-1]
+
 def CheckDir(dir,exp):
     # check if data dir exists
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
     # Iterating through both keys and values
-    for pop_size, tracker in lexicase_configs.items():
+    for pop_size, tracker in lexicase_success.items():
         # experiment dir
         exp_dir = dir + pop_size + '/' + exp
 
@@ -45,17 +63,28 @@ def CheckDir(dir,exp):
 
             file_dir = seed_dir + '/data.csv'
             print('file_dir:', file_dir)
-            print('seed:', seed_dir.split('/')[-1].split('-')[0])
-            return
+            seed = int(seed_dir.split('/')[-1].split('-')[0])
 
-            # now check if the data file exists in full data director
+            # check if the data file exists
             if not os.path.isfile(file_dir):
-                seed = 0
                 does_not_exist[pop_size].append(seed)
                 continue
 
-    for pop_size, tracker in lexicase_configs.items():
+            # check if evaluation count is met
+            if CheckEvaluations(file_dir) != evaluations:
+                evals_not_met[pop_size].append(seed)
+                continue
+
+            lexicase_success[pop_size].append(seed)
+
+
+    for pop_size, tracker in lexicase_success.items():
         print(pop_size,':',tracker)
+        print('does_not_exist:', len(does_not_exist[pop_size])
+        print('does_not_exist:', does_not_exist[pop_size])
+        print('evals_not_met:', len(evals_not_met[pop_size])
+        print('evals_not_met:', evals_not_met[pop_size])
+        print()
 
 def main():
     # read in arguements
