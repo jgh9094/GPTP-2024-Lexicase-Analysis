@@ -29,7 +29,7 @@ def CheckDir(dir,exp):
     # Iterating through both keys and values
     for pop_size, tracker in lexicase_configs.items():
         # experiment dir
-        exp_dir = dir + pop_size + exp
+        exp_dir = dir + pop_size + '/' + exp
 
         print('Checking:',exp_dir)
         if not os.path.isdir(exp_dir):
