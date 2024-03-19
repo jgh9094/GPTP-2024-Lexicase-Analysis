@@ -59,7 +59,7 @@ def PerformanceOverTime(file_name, pop_size):
     performance_tracker['pop_size'] += [pop_size] * int(len(df['performance']) + 1)
 
     for key, value in performance_tracker.items():
-        print(key, value)
+        print(key, len(value))
 
     exit()
 
