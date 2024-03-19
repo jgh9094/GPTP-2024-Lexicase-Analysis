@@ -36,10 +36,10 @@ def CheckDir(dir,exp):
             tracker.append('NOT CREATED')
             continue
 
-        rep_dir = exp_dir + pop_size
-        for seed_dir, _, _ in os.walk(rep_dir):
+        # go through all the seeds
+        for seed_dir, _, _ in os.walk(exp_dir):
             # skip root dir
-            if rep_dir == seed_dir:
+            if exp_dir == seed_dir:
                 continue
 
             print('seed_dir:',seed_dir)
