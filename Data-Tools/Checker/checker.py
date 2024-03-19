@@ -9,6 +9,15 @@ lexicase_success = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop
 does_not_exist = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 evals_not_met = {'Pop_50':[] ,'Pop_100':[] ,'Pop_500':[] ,'Pop_1000':[] ,'Pop_5000':[]}
 
+def SortTrackers():
+    for pop_size, tracker in lexicase_success.items():
+        tracker.sort()
+    for pop_size, tracker in does_not_exist.items():
+        tracker.sort()
+    for pop_size, tracker in evals_not_met.items():
+        tracker.sort()
+
+
 def ExperimentDir(exp):
     if exp == 0:
         return 'Exploitation/'
@@ -76,6 +85,8 @@ def CheckDir(dir,exp):
 
             lexicase_success[pop_size].append(seed)
 
+    SortTrackers()
+    
     print()
     print('#### SUMMARY #####')
     print()
