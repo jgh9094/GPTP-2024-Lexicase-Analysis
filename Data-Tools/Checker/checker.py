@@ -29,17 +29,18 @@ def CheckDir(dir,exp):
     exp_dir = dir + exp
     # Iterating through both keys and values
     for pop_size, tracker in lexicase_configs.items():
+        print('Checking:',exp_dir + pop_size)
         if not os.path.isdir(exp_dir + pop_size):
             tracker.append('NOT CREATED')
             continue
 
         rep_dir = exp_dir + pop_size
         for seed_dir, _, _ in os.walk(rep_dir):
-                # skip root dir
-                if rep_dir == seed_dir:
-                    continue
+            # skip root dir
+            if rep_dir == seed_dir:
+                continue
 
-                print('seed_dir:',seed_dir)
+            print('seed_dir:',seed_dir)
 
 
 def main():
