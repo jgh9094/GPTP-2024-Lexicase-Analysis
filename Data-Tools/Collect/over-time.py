@@ -70,8 +70,8 @@ def CheckDir(dir,exp,dump):
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
-    exp = ExperimentDir(exp)
     exp_acro = ExperimentAcro(exp)
+    exp = ExperimentDir(exp)
 
     # Iterating through both keys and values
     for pop_size, size in lexicase_pop_size.items():
