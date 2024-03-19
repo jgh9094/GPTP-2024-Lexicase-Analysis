@@ -60,9 +60,7 @@ def PerformanceOverTime(file_name, pop_size):
 
     for key, value in performance_tracker.items():
         print(key, len(value))
-
-    exit()
-
+        
     return
 
 def CheckDir(dir,exp,dump):
