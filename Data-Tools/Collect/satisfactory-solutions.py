@@ -14,6 +14,7 @@ def SatifactoryFoundAt(file_name):
     df = df[df['satisfactory_solution'] == 1]
 
     print(df)
+    print('eval:', df['Eval'][0])
 
     exit()
 
