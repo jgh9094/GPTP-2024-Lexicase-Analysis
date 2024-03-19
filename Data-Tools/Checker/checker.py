@@ -95,6 +95,7 @@ def CheckDir(dir,exp):
         print(pop_size,':',len(tracker))
 
         if replicates == len(tracker):
+            print()
             continue
 
         print('success seeds:',tracker)
