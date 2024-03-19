@@ -50,7 +50,7 @@ def CheckDir(dir,exp,dump):
             pop_size_l.append(size)
 
     df = pd.DataFrame({'evaluation': pd.Series(eval_sati_sol_fnd), 'pop_size': pd.Series(pop_size_l)})
-    df.to_csv(path_or_buf=dump+'best.csv', index=False)
+    df.to_csv(path_or_buf=dump+'ssf.csv', index=False)
 
 def main():
     # read in arguements
