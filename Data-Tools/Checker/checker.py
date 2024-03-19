@@ -81,11 +81,11 @@ def CheckDir(dir,exp):
     print()
     for pop_size, tracker in lexicase_success.items():
         print(pop_size,':',len(tracker))
-        print('seeds:',tracker)
+        print('seeds:',tracker.sort())
         print('does_not_exist:', len(does_not_exist[pop_size]))
-        print('does_not_exist:', does_not_exist[pop_size])
+        print('does_not_exist:', does_not_exist[pop_size].sort())
         print('evals_not_met:', len(evals_not_met[pop_size]))
-        print('evals_not_met:', evals_not_met[pop_size])
+        print('evals_not_met:', evals_not_met[pop_size].sort())
         print()
     print('######################################')
 
