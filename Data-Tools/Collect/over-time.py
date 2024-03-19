@@ -58,8 +58,27 @@ def PerformanceOverTime(file_name, pop_size):
     # record contradictory data pop_size
     performance_tracker['pop_size'] += [pop_size] * int(len(df['performance']) + 1)
 
-    # for key, value in performance_tracker.items():
-    #     print(key, len(value))
+    return
+
+def ContradictoryOverTime(file_name, pop_size):
+    # create pandas data frame of entire csv
+    df = pd.read_csv(file_name)
+    df = df[df['Eval'] % resolution == 0]
+
+    # record activation coverage over time
+    contradictory_tracker['activation_coverage'].append(0) # add 0 for the start of a run
+    contradictory_tracker['activation_coverage'] += df['activation_coverage'].tolist()
+
+    # record satisfactory coverage over time
+    contradictory_tracker['satisfactory_coverage'].append(0) # add 0 for the start of a run
+    contradictory_tracker['satisfactory_coverage'] += df['satisfactory_coverage'].tolist()
+
+    # record evaluations over time
+    contradictory_tracker['eval'].append(0) # add 0 for the start of a run
+    contradictory_tracker['eval'] += df['Eval'].tolist()
+
+    # record contradictory data pop_size
+    contradictory_tracker['pop_size'] += [pop_size] * int(len(df['activation_coverage']) + 1)
 
     return
 
@@ -91,7 +110,9 @@ def CheckDir(dir,exp,dump):
 
             # record data for exploitation diagnostics
             if exp_acro == 'exp':
-                PerformanceOverTime(file_dir, pop_size)
+                PerformanceOverTime(file_dir, size)
+            else:
+                ContradictoryOverTime(file_dir, size)
 
     # save the data
     if exp_acro == 'exp':
