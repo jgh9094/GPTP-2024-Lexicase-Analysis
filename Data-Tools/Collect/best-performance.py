@@ -25,11 +25,11 @@ def CheckDir(dir,exp,dump):
         # experiment dir
         exp_dir = dir + pop_size + '/' + exp
 
-        print('Looking at:',exp_dir)
         if not os.path.isdir(exp_dir):
-            print('SKIPPING: EXPERIMENT DIR NOT CREATED')
+            print('SKIPPING:', exp_dir)
             continue
-
+        print('Looking at:',exp_dir)
+        
         # go through all the seeds
         for seed_dir, _, _ in os.walk(exp_dir):
             # skip root dir
