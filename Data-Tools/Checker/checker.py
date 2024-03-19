@@ -50,9 +50,9 @@ def CheckDir(dir,exp):
         # experiment dir
         exp_dir = dir + pop_size + '/' + exp
 
-        print('In:',exp_dir)
+        print('Looking at:',exp_dir)
         if not os.path.isdir(exp_dir):
-            tracker.append('NOT CREATED')
+            tracker.append('EXPERIMENT DIR NOT CREATED')
             continue
 
         # go through all the seeds
@@ -62,7 +62,6 @@ def CheckDir(dir,exp):
                 continue
 
             file_dir = seed_dir + '/data.csv'
-            print('file_dir:', file_dir)
             seed = int(seed_dir.split('/')[-1].split('-')[0])
 
             # check if the data file exists
