@@ -15,7 +15,7 @@ def SatifactoryFoundAt(file_name):
 
     print(df)
 
-    exit
+    exit()
 
     return df['performance'].max()
 
