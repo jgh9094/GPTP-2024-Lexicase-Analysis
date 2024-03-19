@@ -49,11 +49,11 @@ def PerformanceOverTime(file_name, pop_size):
 
     # record performance over time
     performance_tracker['performance'].append(0) # add 0 for the start of a run
-    performance_tracker['performance'].append(df['performance'].tolist())
+    performance_tracker['performance'] += df['performance'].tolist()
 
     # record evaluations over time
     performance_tracker['eval'].append(0) # add 0 for the start of a run
-    performance_tracker['eval'].append(df['Eval'].tolist())
+    performance_tracker['eval'] += df['Eval'].tolist()
 
     # record contradictory data pop_size
     performance_tracker['pop_size'] += [pop_size] * int(len(df['performance']) + 1)
