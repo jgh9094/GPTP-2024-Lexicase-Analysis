@@ -5,21 +5,14 @@ import numpy as np
 import pandas as pd
 
 not_found_eval = 2000000000
-# lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
-lexicase_pop_size = {'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
+lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
+# lexicase_pop_size = {'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
 
 def SatifactoryFoundAt(file_name):
     # create pandas data frame of entire csv
     df = pd.read_csv(file_name)
     df = df[df['satisfactory_solution'] == 1]
-
-    print(df)
-    print('eval:', df.iloc[0]['Eval'])
-    print(type(df.iloc[0]['Eval']))
-
-    exit()
-
-    return df['performance'].max()
+    return df.iloc[0]['Eval']
 
 def CheckDir(dir,exp,dump):
     # check if data dir exists
