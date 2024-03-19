@@ -85,7 +85,7 @@ def CheckDir(dir,exp):
 
             lexicase_success[pop_size].append(seed)
 
-    SortTrackers()
+    # SortTrackers()
 
     print()
     print('#### SUMMARY #####')
