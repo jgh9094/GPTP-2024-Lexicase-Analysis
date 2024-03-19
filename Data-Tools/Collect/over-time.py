@@ -56,7 +56,7 @@ def PerformanceOverTime(file_name, pop_size):
     performance_tracker['eval'].append(df['Eval'].tolist())
 
     # record contradictory data pop_size
-    performance_tracker[pop_size] += [pop_size] * int(len(df['performance']) + 1)
+    performance_tracker['pop_size'] += [pop_size] * int(len(df['performance']) + 1)
 
     for key, value in performance_tracker.items():
         print(key, value)
