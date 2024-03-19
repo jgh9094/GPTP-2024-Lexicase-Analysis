@@ -40,7 +40,7 @@ def ExperimentAcro(exp):
     elif exp == 5:
         return 'con-500/'
     else:
-        sys.exit('UTILS: INVALID EXPERIMENT DIR TO FIND')
+        sys.exit('UTILS: INVALID EXPERIMENT ACRO TO FIND')
 
 def PerformanceOverTime(file_name, pop_size):
     # create pandas data frame of entire csv
