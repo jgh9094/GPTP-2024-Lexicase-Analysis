@@ -42,6 +42,8 @@ def CheckDir(dir,exp):
 
             print('seed_dir:',seed_dir)
 
+    for pop_size, tracker in lexicase_configs.items():
+        print(pop_size,':',tracker)
 
 def main():
     # read in arguements
