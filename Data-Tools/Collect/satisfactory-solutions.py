@@ -61,9 +61,9 @@ def main():
     print('data_dir:', args.data_dir)
     print()
 
-    print('GETTING BEST PERFORMANCES!')
+    print('GETTING EVALUATION SSF!')
     CheckDir(args.data_dir, 'Exploitation/', args.dump_dir)
-    print('FINISHED GATHERING PERFORMANCES!')
+    print('FINISHED GATHERING SSF!')
 
 if __name__ == '__main__':
     main()
