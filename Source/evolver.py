@@ -27,7 +27,6 @@ class EA:
         self.seed = seed
         self.pop_size = pop_size
         self.diagnostic = Diagnostic(diagnostic)
-        self.dimensionality = 100 # default for this work
         self.rng = np.random.default_rng(seed)
         self.pop = []
         self.cores = cores
@@ -37,6 +36,8 @@ class EA:
 
         # set up test cases
         self.test_cases = self.SetTestCases(redundancy, redundancy_prop)
+        self.dimensionality = len(self.test_cases) # number of objectives to optimize with/out redundancy
+        print('# of test cases:', self.dimensionality)
 
         # multiprocessing method, if needed (cores > 1)
         mp.set_start_method('fork')
@@ -150,13 +151,11 @@ class EA:
         base = np.arange(0,self.dimensionality)
         # one test case per objective
         if not flag:
-            print('# of test cases:', len(base))
             return base
         # sample extra test cases per objective given by prop * dimensionality
         else:
             extra = int(prop * self.dimensionality)
             sample = self.rng.choice(base, size=extra, replace=True)
-            print('# of test cases:', len(np.concatenate((base, sample))))
             return np.concatenate((base, sample))
 
 
