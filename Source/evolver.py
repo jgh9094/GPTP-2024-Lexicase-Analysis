@@ -27,6 +27,7 @@ class EA:
         self.seed = seed
         self.pop_size = pop_size
         self.diagnostic = Diagnostic(diagnostic)
+        self.dimensionality_initial = 100 # default for this work
         self.rng = np.random.default_rng(seed)
         self.pop = []
         self.cores = cores
@@ -36,8 +37,8 @@ class EA:
 
         # set up test cases
         self.test_cases = self.SetTestCases(redundancy, redundancy_prop)
-        self.dimensionality = len(self.test_cases) # number of objectives to optimize with/out redundancy
-        print('# of test cases:', self.dimensionality)
+        # true dimensionality of the diagnostic configuration
+        self.dimensionality = len(self.test_cases)
 
         # multiprocessing method, if needed (cores > 1)
         mp.set_start_method('fork')
@@ -148,14 +149,16 @@ class EA:
         return int(parent)
 
     def SetTestCases(self, flag: bool, prop: float) -> npt.NDArray[np.int64]:
-        base = np.arange(0,self.dimensionality)
+        base = np.arange(0,self.dimensionality_initial)
         # one test case per objective
         if not flag:
+            print('# of test cases:', len(base))
             return base
         # sample extra test cases per objective given by prop * dimensionality
         else:
-            extra = int(prop * self.dimensionality)
+            extra = int(prop * self.dimensionality_initial)
             sample = self.rng.choice(base, size=extra, replace=True)
+            print('# of test cases:', len(np.concatenate((base, sample))))
             return np.concatenate((base, sample))
 
 
@@ -168,7 +171,7 @@ class EA:
         # go though each parent id and produce offspring
         offspring_set = []
         for pid in parents:
-            offspring = Org(self.dimensionality)
+            offspring = Org(self.dimensionality_initial)
             off_geno, mut_cnt = self.Mutate(cp.deepcopy(self.pop[pid].GetGenotype()))
 
             # at least one mutation was applied
@@ -211,8 +214,8 @@ class EA:
     def InitializePopulation(self) -> None:
         for _ in range(self.pop_size):
             # initialize org and get random vector
-            org = Org(self.dimensionality)
-            org.SetGenotype(self.rng.uniform(0.0,1.0,self.dimensionality))
+            org = Org(self.dimensionality_initial)
+            org.SetGenotype(self.rng.uniform(0.0,1.0,self.dimensionality_initial))
             self.pop.append(org)
 
 
@@ -261,7 +264,7 @@ class EA:
     # find if satisfactory solution has been found yet
     def SatisfactorySolution(self) -> int:
         for org in self.pop:
-            if org.GetCount() == self.dimensionality:
+            if org.GetCount() == self.dimensionality_initial:
                 return 1
         return 0
 
@@ -276,7 +279,7 @@ class EA:
     def SatisfacotoryTraitCoverage(self) -> int:
         count = 0
         # go through each objective
-        for obj in range(self.dimensionality):
+        for obj in range(self.dimensionality_initial):
             # check that the objective is satisfied
             for org in self.pop:
                 if 0.0 < org.SatisfiedTraitCheck(obj):
