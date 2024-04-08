@@ -2,8 +2,8 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=24
-#SBATCH --array=1-300%6
-#SBATCH -t 96:00:00
+#SBATCH --array=1-300%20
+#SBATCH -t 30:00:00
 #SBATCH --mem=4GB
 #SBATCH --job-name=p5k
 #SBATCH -p defq,moore
@@ -58,30 +58,30 @@ elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_0__MIN} ] && [ ${SLURM_ARRAY_T
   DIAGNOSTIC=2
   REDUNDANCY=0
   REDUNDANCY_PROP=0.0
-  REPLICATE_DIR=Contradictory-0/${SEED}/
+  REPLICATE_DIR=Contradictory-100/${SEED}/
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_10__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_10__MAX} ] ; then
   DIAGNOSTIC=2
   REDUNDANCY=1
-  REDUNDANCY_PROP=0.10
-  REPLICATE_DIR=Contradictory-10/${SEED}/
+  REDUNDANCY_PROP=0.50
+  REPLICATE_DIR=Contradictory-150/${SEED}/
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_50__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_50__MAX} ] ; then
   DIAGNOSTIC=2
   REDUNDANCY=1
-  REDUNDANCY_PROP=0.50
-  REPLICATE_DIR=Contradictory-50/${SEED}/
+  REDUNDANCY_PROP=1.0
+  REPLICATE_DIR=Contradictory-200/${SEED}/
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_100__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_100__MAX} ] ; then
   DIAGNOSTIC=2
   REDUNDANCY=1
-  REDUNDANCY_PROP=1.0
-  REPLICATE_DIR=Contradictory-100/${SEED}/
+  REDUNDANCY_PROP=2.0
+  REPLICATE_DIR=Contradictory-300/${SEED}/
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_500__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${CONTRADICTORY_500__MAX} ] ; then
   DIAGNOSTIC=2
   REDUNDANCY=1
-  REDUNDANCY_PROP=5.0
+  REDUNDANCY_PROP=4.0
   REPLICATE_DIR=Contradictory-500/${SEED}/
 
 else
@@ -97,7 +97,7 @@ POP_SIZE=5000
 # Data dump directory
 ##################################
 
-DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/Pop_${POP_SIZE}/${REPLICATE_DIR}
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/Pop_${POP_SIZE}/${REPLICATE_DIR}
 
 python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main.py \
 --diagnostic ${DIAGNOSTIC} \
