@@ -59,6 +59,7 @@ def main():
 
     args = parser.parse_args()
     print('data_dir:', args.data_dir)
+    print('dump_dir:', args.dump_dir)
     print()
 
     print('GETTING EVALUATION SSF!')
