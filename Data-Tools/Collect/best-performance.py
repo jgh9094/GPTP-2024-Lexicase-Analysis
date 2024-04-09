@@ -29,7 +29,7 @@ def CheckDir(dir,exp,dump):
             print('SKIPPING:', exp_dir)
             continue
         print('Looking at:',exp_dir)
-        
+
         # go through all the seeds
         for seed_dir, _, _ in os.walk(exp_dir):
             # skip root dir
@@ -54,6 +54,7 @@ def main():
 
     args = parser.parse_args()
     print('data_dir:', args.data_dir)
+    print('dump_dir:', args.dump_dir)
     print()
 
     print('GETTING BEST PERFORMANCES!')

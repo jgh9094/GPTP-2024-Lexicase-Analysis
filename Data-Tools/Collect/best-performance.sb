@@ -1,0 +1,28 @@
+#!/bin/bash -l
+
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1
+#SBATCH -t 00:20:00
+#SBATCH --mem=1GB
+#SBATCH --job-name=perf
+#SBATCH -p moore,defq
+#SBATCH --exclude=esplhpc-cp040
+
+##################################
+# Setup environment
+##################################
+
+source /home/hernandezj45/anaconda3/etc/profile.d/conda.sh
+conda activate gptp-2024
+
+##################################
+# Set up vars
+##################################
+
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/
+DUMP_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/
+
+python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Data-Tools/Collect/best-performance.py \
+--data_dir ${DATA_DIR} \
+--dump_dir ${EXPERIMENT} \
