@@ -1,0 +1,69 @@
+#!/bin/bash -l
+
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1-6
+#SBATCH -t 120:00:00
+#SBATCH --mem=3GB
+#SBATCH --job-name=chk
+#SBATCH -p moore,defq
+#SBATCH --exclude=esplhpc-cp040
+
+##################################
+# Setup environment
+##################################
+
+source /home/hernandezj45/anaconda3/etc/profile.d/conda.sh
+conda activate gptp-2024
+
+##################################
+# Treatments
+##################################
+
+EXPLOITATION_RATE=1
+CONTRADICTORY_100=2
+CONTRADICTORY_150=3
+CONTRADICTORY_200=4
+CONTRADICTORY_300=5
+CONTRADICTORY_500=6
+
+##################################
+# Conditions
+##################################
+
+if [ ${SLURM_ARRAY_TASK_ID} -eq ${EXPLOITATION_RATE} ]; then
+  EXPERIMENT=0
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq ${CONTRADICTORY_100} ] ; then
+  EXPERIMENT=1
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_150} ] ; then
+  EXPERIMENT=2
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_200} ] ; then
+  EXPERIMENT=3
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_300} ] ; then
+  EXPERIMENT=4
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${CONTRADICTORY_500} ] ; then
+  EXPERIMENT=5
+
+else
+  echo "${SEED} from ${PROBLEM} failed to launch" >> /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results/failtolaunch.txt
+fi
+
+##################################
+# REMAINING PARAMS
+##################################
+POP_SIZE=50
+
+##################################
+# Data dump directory
+##################################
+
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/
+
+python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Data-Tools/Checker/checker.py \
+--data_dir ${DATA_DIR} \
+--experiment ${EXPERIMENT} \
