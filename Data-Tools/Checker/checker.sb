@@ -3,8 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-6
-#SBATCH -t 120:00:00
-#SBATCH --mem=3GB
+#SBATCH -t 00:20:00
+#SBATCH --mem=1GB
 #SBATCH --job-name=chk
 #SBATCH -p moore,defq
 #SBATCH --exclude=esplhpc-cp040
