@@ -109,12 +109,13 @@ def CheckDir(dir,exp,dump):
             file_dir = seed_dir + '/data.csv'
 
             # record data for exploitation diagnostics
-            if exp_acro == 'exp':
+            if exp_acro == 'Exploitation/':
                 PerformanceOverTime(file_dir, size)
             else:
                 ContradictoryOverTime(file_dir, size)
 
     # save the data
+    os.mkdir(dump+exp_acro)
     if exp_acro == 'Exploitation/':
         df = pd.DataFrame(performance_tracker)
         df.to_csv(path_or_buf=dump+exp_acro+'ot.csv', index=False)
