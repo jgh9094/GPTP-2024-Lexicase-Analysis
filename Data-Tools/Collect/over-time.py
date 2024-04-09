@@ -14,13 +14,13 @@ def ExperimentDir(exp):
     if exp == 0:
         return 'Exploitation/'
     elif exp == 1:
-        return 'Contradictory-0/'
-    elif exp == 2:
-        return 'Contradictory-10/'
-    elif exp == 3:
-        return 'Contradictory-50/'
-    elif exp == 4:
         return 'Contradictory-100/'
+    elif exp == 2:
+        return 'Contradictory-150/'
+    elif exp == 3:
+        return 'Contradictory-200/'
+    elif exp == 4:
+        return 'Contradictory-300/'
     elif exp == 5:
         return 'Contradictory-500/'
     else:
@@ -28,17 +28,17 @@ def ExperimentDir(exp):
 
 def ExperimentAcro(exp):
     if exp == 0:
-        return 'exp'
+        return 'Exploitation/'
     elif exp == 1:
-        return 'con-0/'
+        return 'Contradictory-100/'
     elif exp == 2:
-        return 'con-10/'
+        return 'Contradictory-150/'
     elif exp == 3:
-        return 'con-50/'
+        return 'Contradictory-200/'
     elif exp == 4:
-        return 'con-100/'
+        return 'Contradictory-300/'
     elif exp == 5:
-        return 'con-500/'
+        return 'Contradictory-500/'
     else:
         sys.exit('UTILS: INVALID EXPERIMENT ACRO TO FIND')
 
@@ -117,12 +117,10 @@ def CheckDir(dir,exp,dump):
     # save the data
     if exp_acro == 'exp':
         df = pd.DataFrame(performance_tracker)
-        df.to_csv(path_or_buf=dump+exp_acro+'-ot.csv', index=False)
+        df.to_csv(path_or_buf=dump+exp_acro+'ot.csv', index=False)
     else:
         df = pd.DataFrame(contradictory_tracker)
-        df.to_csv(path_or_buf=dump+exp_acro+'-ot.csv', index=False)
-
-
+        df.to_csv(path_or_buf=dump+exp_acro+'ot.csv', index=False)
 
 def main():
     # read in arguements
