@@ -25,4 +25,4 @@ DUMP_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Re
 
 python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Data-Tools/Collect/best-performance.py \
 --data_dir ${DATA_DIR} \
---dump_dir ${EXPERIMENT} \
+--dump_dir ${DUMP_DIR} \
