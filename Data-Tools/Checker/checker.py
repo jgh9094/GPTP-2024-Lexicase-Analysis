@@ -18,18 +18,17 @@ def SortTrackers():
     for pop_size in evals_not_met:
         evals_not_met[pop_size].sort()
 
-
 def ExperimentDir(exp):
     if exp == 0:
         return 'Exploitation/'
     elif exp == 1:
-        return 'Contradictory-0/'
-    elif exp == 2:
-        return 'Contradictory-10/'
-    elif exp == 3:
-        return 'Contradictory-50/'
-    elif exp == 4:
         return 'Contradictory-100/'
+    elif exp == 2:
+        return 'Contradictory-150/'
+    elif exp == 3:
+        return 'Contradictory-200/'
+    elif exp == 4:
+        return 'Contradictory-300/'
     elif exp == 5:
         return 'Contradictory-500/'
     else:
