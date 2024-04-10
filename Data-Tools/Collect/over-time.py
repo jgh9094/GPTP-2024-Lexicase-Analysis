@@ -115,7 +115,8 @@ def CheckDir(dir,exp,dump):
                 ContradictoryOverTime(file_dir, size)
 
     # save the data
-    os.mkdir(dump+exp_acro)
+    if os.path.exists(dump+exp_acro) is False:
+        os.mkdir(dump+exp_acro)
     if exp_acro == 'Exploitation/':
         df = pd.DataFrame(performance_tracker)
         df.to_csv(path_or_buf=dump+exp_acro+'ot.csv', index=False)
