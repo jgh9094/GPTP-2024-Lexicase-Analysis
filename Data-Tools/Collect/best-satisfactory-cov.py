@@ -6,17 +6,31 @@ import pandas as pd
 
 lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
 
-def BestPerformance(file_name):
+def ExperimentDir(exp):
+    if exp == 0:
+        return 'Contradictory-100/'
+    elif exp == 1:
+        return 'Contradictory-150/'
+    elif exp == 2:
+        return 'Contradictory-200/'
+    elif exp == 3:
+        return 'Contradictory-300/'
+    elif exp == 4:
+        return 'Contradictory-500/'
+    else:
+        sys.exit('UTILS: INVALID EXPERIMENT DIR TO FIND')
+
+def BestSatisfactoryCoverage(file_name):
     # create pandas data frame of entire csv
     df = pd.read_csv(file_name)
-    return df['performance'].max()
+    return df['satisfactory_coverage'].max()
 
 def CheckDir(dir,exp,dump):
     # check if data dir exists
     if not os.path.isdir(dir):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
-    best_performance = []
+    best_sati_cov = []
     pop_size_l = []
 
     # Iterating through both keys and values
@@ -38,11 +52,13 @@ def CheckDir(dir,exp,dump):
             file_dir = seed_dir + '/data.csv'
 
             # record data
-            best_performance.append(BestPerformance(file_dir))
+            best_sati_cov.append(BestSatisfactoryCoverage(file_dir))
             pop_size_l.append(size)
 
-    df = pd.DataFrame({'performance': pd.Series(best_performance), 'pop_size': pd.Series(pop_size_l)})
-    df.to_csv(path_or_buf=dump+'best.csv', index=False)
+    if os.path.exists(dump+exp) is False:
+        os.mkdir(dump+exp)
+    df = pd.DataFrame({'coverage': pd.Series(best_sati_cov), 'pop_size': pd.Series(pop_size_l)})
+    df.to_csv(path_or_buf=dump+exp+'best.csv', index=False)
 
 def main():
     # read in arguements
@@ -50,14 +66,16 @@ def main():
     # where to save the results/models
     parser.add_argument("-d", "--data_dir", default="./", type=str)
     parser.add_argument("-du", "--dump_dir", default="./", type=str)
+    parser.add_argument("-e", "--experiment", default=0, type=int)
 
     args = parser.parse_args()
     print('data_dir:', args.data_dir)
+    print('experiment:', ExperimentDir(args.experiment))
     print('dump_dir:', args.dump_dir)
     print()
 
     print('GETTING BEST PERFORMANCES!')
-    CheckDir(args.data_dir, 'Exploitation/', args.dump_dir)
+    CheckDir(args.data_dir, ExperimentDir(args.experiment), args.dump_dir)
     print('FINISHED GATHERING PERFORMANCES!')
 
 if __name__ == '__main__':
