@@ -4,7 +4,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-not_found_eval = 2000000000
+not_found_eval = 1800000000
 lexicase_pop_size = {'Pop_50': 50 ,'Pop_100': 100 ,'Pop_500': 500 ,'Pop_1000': 1000 ,'Pop_5000': 5000}
 
 def SatifactoryFoundAt(file_name):
