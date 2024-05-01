@@ -58,10 +58,10 @@ class EA:
         while evaluations <= max_evals:
             # Step 1
             self.Evaluate()
-            # Step 2
-            self.RecordData(gen, evaluations)
             # Step 3
             parents = self.Selection()
+            # Step 2
+            self.RecordData(gen, evaluations)
             # Step 4
             self.Reproduction(parents)
 
@@ -245,12 +245,15 @@ class EA:
             self.data_dict.update({key: []})
 
     # record
-    def RecordData(self, gen: int, eval: int) -> None:
+    def RecordData(self, gen: int, eval: int, parents: List[int]) -> None:
 
         self.data_dict['Gen'].append(gen)
         self.data_dict['Eval'].append(eval)
         for key,val in self.data_tracking_dict.items():
-            self.data_dict[key].append(val())
+            if key == 'minimum_activation_count':
+                self.data_dict[key].append(val(parents))
+            else:
+                self.data_dict[key].append(val())
 
     # find best performance in pop
     def Performance(self) -> np.float64:
@@ -296,10 +299,11 @@ class EA:
                 count = org.GetCount()
         return int(count)
 
-    def MinimumActivationCount(self) -> int:
+    def MinimumActivationCount(self, parents: List[int]) -> int:
         coverage = []
         counts = {}
-        for org in self.pop:
+        for parent in parents:
+            org = self.pop[parent]
             coverage.append(org.GetActivationGene())
 
         # Iterate over the list
