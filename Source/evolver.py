@@ -231,7 +231,7 @@ class EA:
         # contradictory
         elif diagnostic == 2:
             self.data_tracking_dict = {'performance': self.Performance,'activation_coverage': self.ActivationGeneCoverage,
-                                 'satisfactory_coverage': self.SatisfacotoryTraitCoverage}
+                                 'satisfactory_coverage': self.SatisfacotoryTraitCoverage, 'minimum_activation_count': self.MinimumActivationCount}
         # multipath exploration
         elif diagnostic == 3:
             self.data_tracking_dict = {'performance': self.Performance,'activation_coverage': self.ActivationGeneCoverage,
@@ -295,6 +295,23 @@ class EA:
             if count < org.GetCount():
                 count = org.GetCount()
         return int(count)
+
+    def MinimumActivationCount(self) -> int:
+        coverage = []
+        counts = {}
+        for org in self.pop:
+            coverage.append(org.GetActivationGene())
+
+        # Iterate over the list
+        for gene in coverage:
+            # If the item is already in the dictionary, increment its count
+            if gene in counts:
+                counts[gene] += 1
+            # If the item is not in the dictionary, add it with a count of 1
+            else:
+                counts[gene] = 1
+
+        return int(min(counts.values()))
 
     #####################
     # SAVING DATA HELPERS
