@@ -61,7 +61,7 @@ class EA:
             # Step 3
             parents = self.Selection()
             # Step 2
-            self.RecordData(gen, evaluations)
+            self.RecordData(gen, evaluations, parents)
             # Step 4
             self.Reproduction(parents)
 
