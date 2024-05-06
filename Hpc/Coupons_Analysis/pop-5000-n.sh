@@ -47,4 +47,3 @@ python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/S
 --seed ${SEED} \
 --cores 24 \
 --savepath ${DATA_DIR}
-`
