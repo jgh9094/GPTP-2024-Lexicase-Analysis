@@ -31,7 +31,7 @@ DIAGNOSTIC=2
 REDUNDANCY=0
 REDUNDANCY_PROP=0.0
 REPLICATE_DIR=Contradictory-100/${SEED}/
-POP_SIZE=1000
+POP_SIZE=5000
 
 ##################################
 # Data dump directory
@@ -47,3 +47,4 @@ python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/S
 --seed ${SEED} \
 --cores 24 \
 --savepath ${DATA_DIR}
+`

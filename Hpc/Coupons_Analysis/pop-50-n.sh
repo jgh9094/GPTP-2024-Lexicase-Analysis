@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=2
 #SBATCH --array=1-50
-#SBATCH -t 120:00:00
+#SBATCH -t 219:00:00
 #SBATCH --mem=2GB
 #SBATCH --job-name=p50-n
 #SBATCH -p moore,defq
