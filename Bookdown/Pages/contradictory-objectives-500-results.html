@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Contradictory objectives 500 results | Supplemental Material for ‘Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics’</title>
+  <meta name="description" content="Supplemental material" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Contradictory objectives 500 results | Supplemental Material for ‘Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics’" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Supplemental material" />
+  <meta name="github-repo" content="jgh9094/GECCO-2024-LEXIDATE-EVALUATION" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Contradictory objectives 500 results | Supplemental Material for ‘Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics’" />
+  
+  <meta name="twitter:description" content="Supplemental material" />
+  
+
+<meta name="author" content="Jose Guadalupe Hernandez, Anil Kumar Saini, Jason H. Moore" />
+
+
+<meta name="date" content="2024-05-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="contradictory-objectives-300-results.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Supplemental material</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-our-supplemental-material"><i class="fa fa-check"></i><b>1.1</b> About our supplemental material</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contributing-authors"><i class="fa fa-check"></i><b>1.2</b> Contributing authors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html"><i class="fa fa-check"></i><b>2</b> Exploitation rate results</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#analysis-setup"><i class="fa fa-check"></i><b>2.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="2.2" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#performance-over-time"><i class="fa fa-check"></i><b>2.2</b> Performance over time</a></li>
+<li class="chapter" data-level="2.3" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#best-performance-evolved"><i class="fa fa-check"></i><b>2.3</b> Best performance evolved</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#summary-statistics"><i class="fa fa-check"></i><b>2.3.1</b> Summary statistics</a></li>
+<li class="chapter" data-level="2.3.2" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>2.3.2</b> Kruskal-Wallis test</a></li>
+<li class="chapter" data-level="2.3.3" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#pairwise-wilcoxon-test"><i class="fa fa-check"></i><b>2.3.3</b> Pairwise wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#evaluation-satisfactory-solution-if-found"><i class="fa fa-check"></i><b>2.4</b> Evaluation satisfactory solution if found</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#summary-statistics-1"><i class="fa fa-check"></i><b>2.4.1</b> Summary statistics</a></li>
+<li class="chapter" data-level="2.4.2" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#kruskal-wallis-test-1"><i class="fa fa-check"></i><b>2.4.2</b> Kruskal-Wallis test</a></li>
+<li class="chapter" data-level="2.4.3" data-path="exploitation-rate-results.html"><a href="exploitation-rate-results.html#pairwise-wilcoxon-test-1"><i class="fa fa-check"></i><b>2.4.3</b> Pairwise wilcoxon test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html"><i class="fa fa-check"></i><b>3</b> Contradictory objectives 100 results</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#analysis-setup-1"><i class="fa fa-check"></i><b>3.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="3.2" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#activation-gene-coverage"><i class="fa fa-check"></i><b>3.2</b> Activation gene coverage</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#coverage-over-time"><i class="fa fa-check"></i><b>3.2.1</b> Coverage over time</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#satisfactory-trait-coverage"><i class="fa fa-check"></i><b>3.3</b> Satisfactory trait coverage</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#coverage-over-time-1"><i class="fa fa-check"></i><b>3.3.1</b> Coverage over time</a></li>
+<li class="chapter" data-level="3.3.2" data-path="contradictory-objectives-100-results.html"><a href="contradictory-objectives-100-results.html#best-satisfactory-trait-coverage-found-throughout-run"><i class="fa fa-check"></i><b>3.3.2</b> Best satisfactory trait coverage found throughout run</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html"><i class="fa fa-check"></i><b>4</b> Contradictory objectives 150 results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#analysis-setup-2"><i class="fa fa-check"></i><b>4.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="4.2" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#activation-gene-coverage-1"><i class="fa fa-check"></i><b>4.2</b> Activation gene coverage</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#coverage-over-time-2"><i class="fa fa-check"></i><b>4.2.1</b> Coverage over time</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#satisfactory-trait-coverage-1"><i class="fa fa-check"></i><b>4.3</b> Satisfactory trait coverage</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#coverage-over-time-3"><i class="fa fa-check"></i><b>4.3.1</b> Coverage over time</a></li>
+<li class="chapter" data-level="4.3.2" data-path="contradictory-objectives-150-results.html"><a href="contradictory-objectives-150-results.html#best-satisfactory-trait-coverage-found-throughout-run-1"><i class="fa fa-check"></i><b>4.3.2</b> Best satisfactory trait coverage found throughout run</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html"><i class="fa fa-check"></i><b>5</b> Contradictory objectives 200 results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#analysis-setup-3"><i class="fa fa-check"></i><b>5.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="5.2" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#activation-gene-coverage-2"><i class="fa fa-check"></i><b>5.2</b> Activation gene coverage</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#coverage-over-time-4"><i class="fa fa-check"></i><b>5.2.1</b> Coverage over time</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#satisfactory-trait-coverage-2"><i class="fa fa-check"></i><b>5.3</b> Satisfactory trait coverage</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#coverage-over-time-5"><i class="fa fa-check"></i><b>5.3.1</b> Coverage over time</a></li>
+<li class="chapter" data-level="5.3.2" data-path="contradictory-objectives-200-results.html"><a href="contradictory-objectives-200-results.html#best-satisfactory-trait-coverage-found-throughout-run-2"><i class="fa fa-check"></i><b>5.3.2</b> Best satisfactory trait coverage found throughout run</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html"><i class="fa fa-check"></i><b>6</b> Contradictory objectives 300 results</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#analysis-setup-4"><i class="fa fa-check"></i><b>6.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="6.2" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#activation-gene-coverage-3"><i class="fa fa-check"></i><b>6.2</b> Activation gene coverage</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#coverage-over-time-6"><i class="fa fa-check"></i><b>6.2.1</b> Coverage over time</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#satisfactory-trait-coverage-3"><i class="fa fa-check"></i><b>6.3</b> Satisfactory trait coverage</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#coverage-over-time-7"><i class="fa fa-check"></i><b>6.3.1</b> Coverage over time</a></li>
+<li class="chapter" data-level="6.3.2" data-path="contradictory-objectives-300-results.html"><a href="contradictory-objectives-300-results.html#best-satisfactory-trait-coverage-found-throughout-run-3"><i class="fa fa-check"></i><b>6.3.2</b> Best satisfactory trait coverage found throughout run</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html"><i class="fa fa-check"></i><b>7</b> Contradictory objectives 500 results</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#analysis-setup-5"><i class="fa fa-check"></i><b>7.1</b> Analysis setup</a></li>
+<li class="chapter" data-level="7.2" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#activation-gene-coverage-4"><i class="fa fa-check"></i><b>7.2</b> Activation gene coverage</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#coverage-over-time-8"><i class="fa fa-check"></i><b>7.2.1</b> Coverage over time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#satisfactory-trait-coverage-4"><i class="fa fa-check"></i><b>7.3</b> Satisfactory trait coverage</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#coverage-over-time-9"><i class="fa fa-check"></i><b>7.3.1</b> Coverage over time</a></li>
+<li class="chapter" data-level="7.3.2" data-path="contradictory-objectives-500-results.html"><a href="contradictory-objectives-500-results.html#best-satisfactory-trait-coverage-found-throughout-run-4"><i class="fa fa-check"></i><b>7.3.2</b> Best satisfactory trait coverage found throughout run</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with ❤ and bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemental Material for ‘Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics’</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="contradictory-objectives-500-results" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Contradictory objectives 500 results<a href="contradictory-objectives-500-results.html#contradictory-objectives-500-results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Here we report the <strong>activation gene coverage</strong> and <strong>satisfactory trait coverage</strong> was found on the contradictory objectives diagnostic.
+50 replicates were conducted for each population size explored.
+Activation gene coverage is calculated by finding all the unique activation genes found within a given population.
+Satisfactory trait coverage is calculated by finding all the unique satisfactory traits found within a given population.</p>
+<div id="analysis-setup-5" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Analysis setup<a href="contradictory-objectives-500-results.html#analysis-setup-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="contradictory-objectives-500-results.html#cb60-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb60-2"><a href="contradictory-objectives-500-results.html#cb60-2" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb60-3"><a href="contradictory-objectives-500-results.html#cb60-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb60-4"><a href="contradictory-objectives-500-results.html#cb60-4" tabindex="-1"></a><span class="fu">library</span>(PupillometryR)</span>
+<span id="cb60-5"><a href="contradictory-objectives-500-results.html#cb60-5" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="contradictory-objectives-500-results.html#cb60-6" tabindex="-1"></a><span class="co"># over time data</span></span>
+<span id="cb60-7"><a href="contradictory-objectives-500-results.html#cb60-7" tabindex="-1"></a>over_time <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../Paper_Data/Contradictory-500/ot.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb60-8"><a href="contradictory-objectives-500-results.html#cb60-8" tabindex="-1"></a>over_time<span class="sc">$</span>pop_size <span class="ot">&lt;-</span> <span class="fu">factor</span>(over_time<span class="sc">$</span>pop_size, <span class="at">levels =</span> NAMES)</span>
+<span id="cb60-9"><a href="contradictory-objectives-500-results.html#cb60-9" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="contradictory-objectives-500-results.html#cb60-10" tabindex="-1"></a><span class="co"># best performance data</span></span>
+<span id="cb60-11"><a href="contradictory-objectives-500-results.html#cb60-11" tabindex="-1"></a>best <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;../Paper_Data/Contradictory-500/best.csv&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb60-12"><a href="contradictory-objectives-500-results.html#cb60-12" tabindex="-1"></a>best<span class="sc">$</span>pop_size <span class="ot">&lt;-</span> <span class="fu">factor</span>(best<span class="sc">$</span>pop_size, <span class="at">levels =</span> NAMES)</span></code></pre></div>
+</div>
+<div id="activation-gene-coverage-4" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Activation gene coverage<a href="contradictory-objectives-500-results.html#activation-gene-coverage-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="coverage-over-time-8" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Coverage over time<a href="contradictory-objectives-500-results.html#coverage-over-time-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Performance of the best solution in the population at each generation over time.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="contradictory-objectives-500-results.html#cb61-1" tabindex="-1"></a><span class="co"># aggregate</span></span>
+<span id="cb61-2"><a href="contradictory-objectives-500-results.html#cb61-2" tabindex="-1"></a>lines <span class="ot">=</span> over_time <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="contradictory-objectives-500-results.html#cb61-3" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_size, eval) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="contradictory-objectives-500-results.html#cb61-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb61-5"><a href="contradictory-objectives-500-results.html#cb61-5" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(activation_coverage),</span>
+<span id="cb61-6"><a href="contradictory-objectives-500-results.html#cb61-6" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(activation_coverage),</span>
+<span id="cb61-7"><a href="contradictory-objectives-500-results.html#cb61-7" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(activation_coverage)</span>
+<span id="cb61-8"><a href="contradictory-objectives-500-results.html#cb61-8" tabindex="-1"></a>  )</span>
+<span id="cb61-9"><a href="contradictory-objectives-500-results.html#cb61-9" tabindex="-1"></a>lines<span class="sc">$</span>pop_size <span class="ot">&lt;-</span> <span class="fu">factor</span>(lines<span class="sc">$</span>pop_size, <span class="at">levels =</span> NAMES)</span>
+<span id="cb61-10"><a href="contradictory-objectives-500-results.html#cb61-10" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="contradictory-objectives-500-results.html#cb61-11" tabindex="-1"></a><span class="fu">ggplot</span>(lines, <span class="fu">aes</span>(<span class="at">x=</span>eval, <span class="at">y=</span>mean, <span class="at">group =</span> pop_size, <span class="at">fill =</span> pop_size, <span class="at">color =</span> pop_size, <span class="at">shape =</span> pop_size)) <span class="sc">+</span></span>
+<span id="cb61-12"><a href="contradictory-objectives-500-results.html#cb61-12" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> min, <span class="at">ymax =</span> max), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb61-13"><a href="contradictory-objectives-500-results.html#cb61-13" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb61-14"><a href="contradictory-objectives-500-results.html#cb61-14" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">filter</span>(lines, eval <span class="sc">%%</span> <span class="dv">100000000</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> eval <span class="sc">!=</span> <span class="dv">0</span>), <span class="at">size =</span> <span class="fl">1.0</span>, <span class="at">stroke =</span> <span class="fl">2.0</span>, <span class="at">alpha =</span> <span class="fl">1.0</span>) <span class="sc">+</span></span>
+<span id="cb61-15"><a href="contradictory-objectives-500-results.html#cb61-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb61-16"><a href="contradictory-objectives-500-results.html#cb61-16" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Coverage&quot;</span>,</span>
+<span id="cb61-17"><a href="contradictory-objectives-500-results.html#cb61-17" tabindex="-1"></a>    <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb61-18"><a href="contradictory-objectives-500-results.html#cb61-18" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">25</span>),</span>
+<span id="cb61-19"><a href="contradictory-objectives-500-results.html#cb61-19" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;25&quot;</span>, <span class="st">&quot;50&quot;</span>, <span class="st">&quot;75&quot;</span>, <span class="st">&quot;100&quot;</span>)</span>
+<span id="cb61-20"><a href="contradictory-objectives-500-results.html#cb61-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb61-21"><a href="contradictory-objectives-500-results.html#cb61-21" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb61-22"><a href="contradictory-objectives-500-results.html#cb61-22" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Evaluation&quot;</span>,</span>
+<span id="cb61-23"><a href="contradictory-objectives-500-results.html#cb61-23" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;0.0e+0&#39;</span>, <span class="st">&#39;5.0e+8&#39;</span>,<span class="st">&#39;1.0e+9&#39;</span>,<span class="st">&#39;1.5e+9&#39;</span>),</span>
+<span id="cb61-24"><a href="contradictory-objectives-500-results.html#cb61-24" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1520000000</span>)</span>
+<span id="cb61-25"><a href="contradictory-objectives-500-results.html#cb61-25" tabindex="-1"></a></span>
+<span id="cb61-26"><a href="contradictory-objectives-500-results.html#cb61-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb61-27"><a href="contradictory-objectives-500-results.html#cb61-27" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values=</span>SHAPE)<span class="sc">+</span></span>
+<span id="cb61-28"><a href="contradictory-objectives-500-results.html#cb61-28" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> cb_palette) <span class="sc">+</span></span>
+<span id="cb61-29"><a href="contradictory-objectives-500-results.html#cb61-29" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cb_palette) <span class="sc">+</span></span>
+<span id="cb61-30"><a href="contradictory-objectives-500-results.html#cb61-30" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Activation gene over time&#39;</span>)<span class="sc">+</span></span>
+<span id="cb61-31"><a href="contradictory-objectives-500-results.html#cb61-31" tabindex="-1"></a>  p_theme <span class="sc">+</span></span>
+<span id="cb61-32"><a href="contradictory-objectives-500-results.html#cb61-32" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb61-33"><a href="contradictory-objectives-500-results.html#cb61-33" tabindex="-1"></a>    <span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb61-34"><a href="contradictory-objectives-500-results.html#cb61-34" tabindex="-1"></a>    <span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb61-35"><a href="contradictory-objectives-500-results.html#cb61-35" tabindex="-1"></a>    <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>)</span>
+<span id="cb61-36"><a href="contradictory-objectives-500-results.html#cb61-36" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="lexicase-analysis-supplemental_files/figure-html/con-500-act-ot-1.png" width="100%" /></p>
+</div>
+</div>
+<div id="satisfactory-trait-coverage-4" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Satisfactory trait coverage<a href="contradictory-objectives-500-results.html#satisfactory-trait-coverage-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="coverage-over-time-9" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Coverage over time<a href="contradictory-objectives-500-results.html#coverage-over-time-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage over time.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="contradictory-objectives-500-results.html#cb62-1" tabindex="-1"></a><span class="co"># aggregate</span></span>
+<span id="cb62-2"><a href="contradictory-objectives-500-results.html#cb62-2" tabindex="-1"></a>lines <span class="ot">=</span> over_time <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="contradictory-objectives-500-results.html#cb62-3" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_size, eval) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="contradictory-objectives-500-results.html#cb62-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb62-5"><a href="contradictory-objectives-500-results.html#cb62-5" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(satisfactory_coverage),</span>
+<span id="cb62-6"><a href="contradictory-objectives-500-results.html#cb62-6" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(satisfactory_coverage),</span>
+<span id="cb62-7"><a href="contradictory-objectives-500-results.html#cb62-7" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(satisfactory_coverage)</span>
+<span id="cb62-8"><a href="contradictory-objectives-500-results.html#cb62-8" tabindex="-1"></a>  )</span>
+<span id="cb62-9"><a href="contradictory-objectives-500-results.html#cb62-9" tabindex="-1"></a>lines<span class="sc">$</span>pop_size <span class="ot">&lt;-</span> <span class="fu">factor</span>(lines<span class="sc">$</span>pop_size, <span class="at">levels =</span> NAMES)</span>
+<span id="cb62-10"><a href="contradictory-objectives-500-results.html#cb62-10" tabindex="-1"></a></span>
+<span id="cb62-11"><a href="contradictory-objectives-500-results.html#cb62-11" tabindex="-1"></a><span class="fu">ggplot</span>(lines, <span class="fu">aes</span>(<span class="at">x=</span>eval, <span class="at">y=</span>mean, <span class="at">group =</span> pop_size, <span class="at">fill =</span> pop_size, <span class="at">color =</span> pop_size, <span class="at">shape =</span> pop_size)) <span class="sc">+</span></span>
+<span id="cb62-12"><a href="contradictory-objectives-500-results.html#cb62-12" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> min, <span class="at">ymax =</span> max), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb62-13"><a href="contradictory-objectives-500-results.html#cb62-13" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb62-14"><a href="contradictory-objectives-500-results.html#cb62-14" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">filter</span>(lines, eval <span class="sc">%%</span> <span class="dv">100000000</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> eval <span class="sc">!=</span> <span class="dv">0</span>), <span class="at">size =</span> <span class="fl">1.0</span>, <span class="at">stroke =</span> <span class="fl">2.0</span>, <span class="at">alpha =</span> <span class="fl">1.0</span>) <span class="sc">+</span></span>
+<span id="cb62-15"><a href="contradictory-objectives-500-results.html#cb62-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb62-16"><a href="contradictory-objectives-500-results.html#cb62-16" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Coverage&quot;</span>,</span>
+<span id="cb62-17"><a href="contradictory-objectives-500-results.html#cb62-17" tabindex="-1"></a>    <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">60</span>),</span>
+<span id="cb62-18"><a href="contradictory-objectives-500-results.html#cb62-18" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">60</span>, <span class="dv">15</span>),</span>
+<span id="cb62-19"><a href="contradictory-objectives-500-results.html#cb62-19" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;15&quot;</span>, <span class="st">&quot;30&quot;</span>, <span class="st">&quot;45&quot;</span>, <span class="st">&quot;60&quot;</span>)</span>
+<span id="cb62-20"><a href="contradictory-objectives-500-results.html#cb62-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb62-21"><a href="contradictory-objectives-500-results.html#cb62-21" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb62-22"><a href="contradictory-objectives-500-results.html#cb62-22" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Evaluation&quot;</span>,</span>
+<span id="cb62-23"><a href="contradictory-objectives-500-results.html#cb62-23" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;0.0e+0&#39;</span>, <span class="st">&#39;5.0e+8&#39;</span>,<span class="st">&#39;1.0e+9&#39;</span>,<span class="st">&#39;1.5e+9&#39;</span>),</span>
+<span id="cb62-24"><a href="contradictory-objectives-500-results.html#cb62-24" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1520000000</span>)</span>
+<span id="cb62-25"><a href="contradictory-objectives-500-results.html#cb62-25" tabindex="-1"></a></span>
+<span id="cb62-26"><a href="contradictory-objectives-500-results.html#cb62-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb62-27"><a href="contradictory-objectives-500-results.html#cb62-27" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values=</span>SHAPE)<span class="sc">+</span></span>
+<span id="cb62-28"><a href="contradictory-objectives-500-results.html#cb62-28" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> cb_palette) <span class="sc">+</span></span>
+<span id="cb62-29"><a href="contradictory-objectives-500-results.html#cb62-29" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cb_palette) <span class="sc">+</span></span>
+<span id="cb62-30"><a href="contradictory-objectives-500-results.html#cb62-30" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="sc">+</span></span>
+<span id="cb62-31"><a href="contradictory-objectives-500-results.html#cb62-31" tabindex="-1"></a>  p_theme <span class="sc">+</span></span>
+<span id="cb62-32"><a href="contradictory-objectives-500-results.html#cb62-32" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb62-33"><a href="contradictory-objectives-500-results.html#cb62-33" tabindex="-1"></a>    <span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb62-34"><a href="contradictory-objectives-500-results.html#cb62-34" tabindex="-1"></a>    <span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb62-35"><a href="contradictory-objectives-500-results.html#cb62-35" tabindex="-1"></a>    <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>)</span>
+<span id="cb62-36"><a href="contradictory-objectives-500-results.html#cb62-36" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="lexicase-analysis-supplemental_files/figure-html/con-500-sat-ot-1.png" width="100%" /></p>
+</div>
+<div id="best-satisfactory-trait-coverage-found-throughout-run-4" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Best satisfactory trait coverage found throughout run<a href="contradictory-objectives-500-results.html#best-satisfactory-trait-coverage-found-throughout-run-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage of the best population found throughout an evolutionary run.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="contradictory-objectives-500-results.html#cb63-1" tabindex="-1"></a><span class="fu">ggplot</span>(best, <span class="fu">aes</span>(<span class="at">x =</span> pop_size, <span class="at">y =</span> coverage, <span class="at">color =</span> pop_size, <span class="at">fill =</span> pop_size, <span class="at">shape =</span> pop_size)) <span class="sc">+</span></span>
+<span id="cb63-2"><a href="contradictory-objectives-500-results.html#cb63-2" tabindex="-1"></a>  <span class="fu">geom_flat_violin</span>(<span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> .<span class="dv">1</span>, <span class="at">y =</span> <span class="dv">0</span>), <span class="at">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">width =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb63-3"><a href="contradictory-objectives-500-results.html#cb63-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&#39;black&#39;</span>, <span class="at">width =</span> .<span class="dv">07</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.0</span>, <span class="at">size =</span> <span class="fl">1.0</span>, <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> .<span class="dv">16</span>, <span class="at">y =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb63-4"><a href="contradictory-objectives-500-results.html#cb63-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.02</span>, <span class="at">height =</span> <span class="fl">0.0001</span>), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">1.0</span>) <span class="sc">+</span></span>
+<span id="cb63-5"><a href="contradictory-objectives-500-results.html#cb63-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb63-6"><a href="contradictory-objectives-500-results.html#cb63-6" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Coverage&quot;</span>,</span>
+<span id="cb63-7"><a href="contradictory-objectives-500-results.html#cb63-7" tabindex="-1"></a>    <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">60</span>),</span>
+<span id="cb63-8"><a href="contradictory-objectives-500-results.html#cb63-8" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">60</span>, <span class="dv">15</span>),</span>
+<span id="cb63-9"><a href="contradictory-objectives-500-results.html#cb63-9" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;15&quot;</span>, <span class="st">&quot;30&quot;</span>, <span class="st">&quot;45&quot;</span>, <span class="st">&quot;60&quot;</span>)</span>
+<span id="cb63-10"><a href="contradictory-objectives-500-results.html#cb63-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb63-11"><a href="contradictory-objectives-500-results.html#cb63-11" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
+<span id="cb63-12"><a href="contradictory-objectives-500-results.html#cb63-12" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;Population Size&quot;</span></span>
+<span id="cb63-13"><a href="contradictory-objectives-500-results.html#cb63-13" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb63-14"><a href="contradictory-objectives-500-results.html#cb63-14" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values=</span>SHAPE)<span class="sc">+</span></span>
+<span id="cb63-15"><a href="contradictory-objectives-500-results.html#cb63-15" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> cb_palette, ) <span class="sc">+</span></span>
+<span id="cb63-16"><a href="contradictory-objectives-500-results.html#cb63-16" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cb_palette) <span class="sc">+</span></span>
+<span id="cb63-17"><a href="contradictory-objectives-500-results.html#cb63-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;  Best satisfactory coverage&#39;</span>)<span class="sc">+</span></span>
+<span id="cb63-18"><a href="contradictory-objectives-500-results.html#cb63-18" tabindex="-1"></a>  p_theme <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb63-19"><a href="contradictory-objectives-500-results.html#cb63-19" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb63-20"><a href="contradictory-objectives-500-results.html#cb63-20" tabindex="-1"></a>    <span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb63-21"><a href="contradictory-objectives-500-results.html#cb63-21" tabindex="-1"></a>    <span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>),</span>
+<span id="cb63-22"><a href="contradictory-objectives-500-results.html#cb63-22" tabindex="-1"></a>    <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">title =</span> <span class="st">&#39;Population</span><span class="sc">\n</span><span class="st">Size&#39;</span>)</span>
+<span id="cb63-23"><a href="contradictory-objectives-500-results.html#cb63-23" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="lexicase-analysis-supplemental_files/figure-html/con-500-sat-best-1.png" width="100%" /></p>
+<div id="summary-statistics-6" class="section level4 hasAnchor" number="7.3.2.1">
+<h4><span class="header-section-number">7.3.2.1</span> Summary statistics<a href="contradictory-objectives-500-results.html#summary-statistics-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="contradictory-objectives-500-results.html#cb64-1" tabindex="-1"></a>best <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="contradictory-objectives-500-results.html#cb64-2" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_size) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="contradictory-objectives-500-results.html#cb64-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb64-4"><a href="contradictory-objectives-500-results.html#cb64-4" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb64-5"><a href="contradictory-objectives-500-results.html#cb64-5" tabindex="-1"></a>    <span class="at">na_cnt =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(coverage)),</span>
+<span id="cb64-6"><a href="contradictory-objectives-500-results.html#cb64-6" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(coverage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-7"><a href="contradictory-objectives-500-results.html#cb64-7" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(coverage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-8"><a href="contradictory-objectives-500-results.html#cb64-8" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(coverage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-9"><a href="contradictory-objectives-500-results.html#cb64-9" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(coverage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-10"><a href="contradictory-objectives-500-results.html#cb64-10" tabindex="-1"></a>    <span class="at">IQR =</span> <span class="fu">IQR</span>(coverage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-11"><a href="contradictory-objectives-500-results.html#cb64-11" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 8
+##   pop_size count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt;    &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 50          50      0     3    4    4.36     5  1   
+## 2 100         50      0     7    9    8.62    10  1   
+## 3 500         50      0    36   39.5 39.6     44  3   
+## 4 1000        50      0    39   46.5 45.7     52  4.75
+## 5 5000        50      0    22   29   28.6     34  4.75</code></pre>
+</div>
+<div id="kruskal-wallis-test-6" class="section level4 hasAnchor" number="7.3.2.2">
+<h4><span class="header-section-number">7.3.2.2</span> Kruskal-Wallis test<a href="contradictory-objectives-500-results.html#kruskal-wallis-test-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="contradictory-objectives-500-results.html#cb66-1" tabindex="-1"></a><span class="fu">kruskal.test</span>(coverage <span class="sc">~</span> pop_size, <span class="at">data =</span> best)</span></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  coverage by pop_size
+## Kruskal-Wallis chi-squared = 237.63, df = 4,
+## p-value &lt; 2.2e-16</code></pre>
+</div>
+<div id="pairwise-wilcoxon-test-6" class="section level4 hasAnchor" number="7.3.2.3">
+<h4><span class="header-section-number">7.3.2.3</span> Pairwise wilcoxon test<a href="contradictory-objectives-500-results.html#pairwise-wilcoxon-test-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="contradictory-objectives-500-results.html#cb68-1" tabindex="-1"></a>best<span class="sc">$</span>pop_size <span class="ot">&lt;-</span> <span class="fu">factor</span>(best<span class="sc">$</span>pop_size, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1000</span>,<span class="dv">500</span>,<span class="dv">5000</span>,<span class="dv">100</span>,<span class="dv">50</span>))</span>
+<span id="cb68-2"><a href="contradictory-objectives-500-results.html#cb68-2" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(<span class="at">x =</span> best<span class="sc">$</span>coverage, <span class="at">g =</span> best<span class="sc">$</span>pop_size, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</span>
+<span id="cb68-3"><a href="contradictory-objectives-500-results.html#cb68-3" tabindex="-1"></a>                     <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">conf.int =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&#39;l&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  best$coverage and best$pop_size 
+## 
+##      1000    500     5000    100    
+## 500  5.7e-14 -       -       -      
+## 5000 &lt; 2e-16 &lt; 2e-16 -       -      
+## 100  &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 -      
+## 50   &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16
+## 
+## P value adjustment method: bonferroni</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="contradictory-objectives-300-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jgh9094/GPTP-2024-Lexicase-Analysis/tree/main/contradictory-objectives-500.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["lexicase-analysis-supplemental.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+book_filename: "lexicase-analysis-supplemental"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files: ["index.Rmd",
+            "exploitation.Rmd",
+            "contradictory-objectives-100.Rmd",
+            "contradictory-objectives-150.Rmd",
+            "contradictory-objectives-200.Rmd",
+            "contradictory-objectives-300.Rmd",
+            "contradictory-objectives-500.Rmd",
+            "tail.Rmd"
+           ]

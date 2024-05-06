@@ -1,0 +1,174 @@
+# Contradictory objectives 200 results
+
+Here we report the **activation gene coverage** and  **satisfactory trait coverage** was found on the contradictory objectives diagnostic.
+50 replicates were conducted for each population size explored.
+Activation gene coverage is calculated by finding all the unique activation genes found within a given population.
+Satisfactory trait coverage is calculated by finding all the unique satisfactory traits found within a given population.
+
+## Analysis setup
+
+```{r con-200-data-setup, message=FALSE}
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+
+# over time data
+over_time <- read.csv("../Paper_Data/Contradictory-200/ot.csv", header = TRUE, stringsAsFactors = FALSE)
+over_time$pop_size <- factor(over_time$pop_size, levels = NAMES)
+
+# best performance data
+best <- read.csv('../Paper_Data/Contradictory-200/best.csv', header = TRUE, stringsAsFactors = FALSE)
+best$pop_size <- factor(best$pop_size, levels = NAMES)
+```
+
+## Activation gene coverage
+
+### Coverage over time
+
+Performance of the best solution in the population at each generation over time.
+
+```{r con-200-act-ot, message=FALSE, out.width="100%"}
+# aggregate
+lines = over_time %>%
+  group_by(pop_size, eval) %>%
+  dplyr::summarise(
+    min = min(activation_coverage),
+    mean = mean(activation_coverage),
+    max = max(activation_coverage)
+  )
+lines$pop_size <- factor(lines$pop_size, levels = NAMES)
+
+ggplot(lines, aes(x=eval, y=mean, group = pop_size, fill = pop_size, color = pop_size, shape = pop_size)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(linewidth = 0.5) +
+  geom_point(data = filter(lines, eval %% 100000000 == 0 & eval != 0), size = 1.0, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 25),
+    labels=c("0", "25", "50", "75", "100")
+  ) +
+  scale_x_continuous(
+    name="Evaluation",
+    labels = c('0.0e+0', '5.0e+8','1.0e+9','1.5e+9'),
+    limits = c(0,1520000000)
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene over time')+
+  p_theme +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize')
+  )
+```
+
+## Satisfactory trait coverage
+
+### Coverage over time
+
+Satisfactory trait coverage over time.
+
+```{r con-200-sat-ot, message=FALSE, out.width="100%"}
+# aggregate
+lines = over_time %>%
+  group_by(pop_size, eval) %>%
+  dplyr::summarise(
+    min = min(satisfactory_coverage),
+    mean = mean(satisfactory_coverage),
+    max = max(satisfactory_coverage)
+  )
+lines$pop_size <- factor(lines$pop_size, levels = NAMES)
+
+ggplot(lines, aes(x=eval, y=mean, group = pop_size, fill = pop_size, color = pop_size, shape = pop_size)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(linewidth = 0.5) +
+  geom_point(data = filter(lines, eval %% 100000000 == 0 & eval != 0), size = 1.0, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 25),
+    labels=c("0", "25", "50", "75", "100")
+  ) +
+  scale_x_continuous(
+    name="Evaluation",
+    labels = c('0.0e+0', '5.0e+8','1.0e+9','1.5e+9'),
+    limits = c(0,1520000000)
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Satisfactory trait coverage over time')+
+  p_theme +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize')
+  )
+```
+
+
+### Best satisfactory trait coverage found throughout run
+
+Satisfactory trait coverage of the best population found throughout an evolutionary run.
+
+```{r con-200-sat-best, message=FALSE, out.width="100%"}
+ggplot(best, aes(x = pop_size, y = coverage, color = pop_size, fill = pop_size, shape = pop_size)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.02, height = 0.0001), size = 1.5, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 25),
+    labels=c("0", "25", "50", "75", "100"),
+  ) +
+  scale_x_discrete(
+    name="Population Size"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('  Best satisfactory coverage')+
+  p_theme + coord_flip() +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize')
+  )
+```
+
+#### Summary statistics
+
+```{r con-200-sat-best-sts, message=FALSE, out.width="100%"}
+best %>%
+  group_by(pop_size) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(coverage)),
+    min = min(coverage, na.rm = TRUE),
+    median = median(coverage, na.rm = TRUE),
+    mean = mean(coverage, na.rm = TRUE),
+    max = max(coverage, na.rm = TRUE),
+    IQR = IQR(coverage, na.rm = TRUE)
+  )
+```
+
+#### Kruskal-Wallis test
+
+```{r con-200-sat-best-kru, message=FALSE, out.width="100%"}
+kruskal.test(coverage ~ pop_size, data = best)
+```
+
+
+#### Pairwise wilcoxon test
+
+```{r con-200-sat-best-wil, message=FALSE, out.width="100%"}
+pairwise.wilcox.test(x = best$coverage, g = best$pop_size, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 'g')
+```

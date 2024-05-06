@@ -1,0 +1,71 @@
+---
+title: "Supplemental Material for 'Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics'"
+author: "Jose Guadalupe Hernandez, Anil Kumar Saini, Jason H. Moore"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+documentclass: book
+bibliography: ["packages.bib", "supplemental.bib"]
+biblio-style: apalike
+nocite: '@*'
+link-citations: yes
+github-repo: jgh9094/GECCO-2024-LEXIDATE-EVALUATION
+description: "Supplemental material"
+---
+
+```{r index, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup, echo=TRUE}
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+library(scales) # to access break formatting functions
+
+
+NAMES = c(50,100,500,1000,5000)
+SHAPE <- c(25,21,22,23,24)
+cb_palette <- c('#648FFF','#FE6100','#DC267F','#785EF0','#FFB000')
+TSIZE <- 16
+
+p_theme <- theme(
+  plot.title = element_text( face = "bold", size = 16, hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  legend.title=element_text(size=16),
+  legend.text=element_text(size=16),
+  axis.title = element_text(size=16),
+  axis.text = element_text(size=16),
+  legend.position="bottom",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  size = 0.5, linetype = "solid")
+)
+```
+
+# Introduction
+
+This is not intended as a stand-alone document, but as a companion to our manuscript.
+
+## About our supplemental material
+
+As you may have noticed (unless you're reading a pdf version of this), our supplemental material is hosted using [GitHub pages](https://pages.github.com/).
+We compiled our data analyses and supplemental documentation into this nifty web-accessible book using [bookdown](https://bookdown.org).
+
+The code used for this supplemental material can be found in [this GitHub repository](https://github.com/jgh9094/GPTP-2024-Lexicase-Analysis).
+
+Our supplemental material includes the following:
+
+- Exploitation rate results (Section \@ref(exploitation-rate-results))
+- Contradictory rates results w/ 100 standard test cases (Section \@ref(contradictory-objectives-100-results))
+- Contradictory rates results w/ 50 redundant test cases (Section \@ref(contradictory-objectives-150-results))
+- Contradictory rates results w/ 100 redundant test cases (Section \@ref(contradictory-objectives-200-results))
+- Contradictory rates results w/ 200 redundant test cases (Section \@ref(contradictory-objectives-300-results))
+- Contradictory rates results w/ 300 redundant test cases (Section \@ref(contradictory-objectives-500-results))
+
+## Contributing authors
+
+- [Jose Guadalupe Hernandez](https://jgh9094.github.io/)
+- [Anil Kumar Saini](https://theaksaini.github.io/)
+- [Jason H. Moore](https://jasonhmoore.org/)
