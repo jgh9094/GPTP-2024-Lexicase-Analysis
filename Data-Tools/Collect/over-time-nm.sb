@@ -1,0 +1,50 @@
+#!/bin/bash -l
+
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1-2
+#SBATCH -t 00:20:00
+#SBATCH --mem=1GB
+#SBATCH --job-name=ot-nm
+#SBATCH -p moore,defq
+#SBATCH --exclude=esplhpc-cp040
+
+##################################
+# Setup environment
+##################################
+
+source /home/hernandezj45/anaconda3/etc/profile.d/conda.sh
+conda activate gptp-2024
+
+##################################
+# Treatments
+##################################
+
+MUTATION=1
+NO_MUTATION=2
+
+##################################
+# Conditions
+##################################
+
+if [ ${SLURM_ARRAY_TASK_ID} -eq ${MUTATION} ]; then
+  DIR=Mutation
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq ${NO_MUTATION} ] ; then
+  DIR=No_Mutation
+
+else
+  echo "${SEED} from ${PROBLEM} failed to launch" >> /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/failtolaunch.txt
+fi
+
+##################################
+# Set up vars
+##################################
+
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/Coupon_Collector/${DIR}/
+DUMP_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Paper_Data/Coupon_Collector/
+
+python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Data-Tools/Collect/over-time.py \
+--data_dir ${DATA_DIR} \
+--experiment ${EXPERIMENT} \
+--dump_dir ${DUMP_DIR} \
