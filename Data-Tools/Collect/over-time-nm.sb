@@ -43,7 +43,7 @@ fi
 ##################################
 
 DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/Coupon_Collector/${DIR}/
-DUMP_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Paper_Data/Coupon_Collector/
+DUMP_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Paper_Data/Coupon_Collector/${DIR}/
 
 python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Data-Tools/Collect/over-time.py \
 --data_dir ${DATA_DIR} \
