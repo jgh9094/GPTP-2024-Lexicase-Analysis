@@ -22,6 +22,7 @@ conda activate gptp-2024
 
 MUTATION=1
 NO_MUTATION=2
+EXPERIMENT=1
 
 ##################################
 # Conditions
