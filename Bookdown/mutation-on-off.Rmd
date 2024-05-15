@@ -1,0 +1,301 @@
+# Mutation On and Off
+
+Here we report the **activation gene coverage** and  **satisfactory trait coverage** was found on the contradictory objectives diagnostic for runs with mutation on and with mutation off.
+50 replicates were conducted for each population size explored.
+Activation gene coverage is calculated by finding all the unique activation genes found within a given population.
+Satisfactory trait coverage is calculated by finding all the unique satisfactory traits found within a given population.
+
+## Analysis setup
+
+```{r mut-data-setup, message=FALSE}
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+
+MUTATION <- c('No','Yes')
+
+# mutation data
+m_data_dir <- '../Paper_Data/Mutation-On-Off/On/Contradictory-100/'
+m_over_time <- read.csv(paste(m_data_dir, 'ot.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+m_over_time$pop_size <- factor(m_over_time$pop_size, levels = NAMES)
+m_over_time$mutation <- 'Yes'
+
+# no mutation data
+n_data_dir <- '../Paper_Data/Mutation-On-Off/Off/Contradictory-100/'
+n_over_time <- read.csv(paste(n_data_dir, 'ot.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+n_over_time$pop_size <- factor(n_over_time$pop_size, levels = NAMES)
+n_over_time$mutation <- 'No'
+
+# combine all data
+over_time <- rbind(m_over_time,n_over_time)
+over_time$mutation <- factor(over_time$mutation, levels=MUTATION)
+```
+
+## Population size 100
+
+### Activation gene coverage over time
+
+Activation gene coverage found in each generation.
+
+```{r mut-act-ot-100, message=FALSE, out.width="100%"}
+# aggregate
+lines = filter(over_time, pop_size == 100 & eval > 0) %>%
+  group_by(mutation, eval) %>%
+  dplyr::summarise(
+    min = min(activation_coverage),
+    mean = mean(activation_coverage),
+    max = max(activation_coverage)
+  )
+lines$mutation <- factor(lines$mutation, levels = MUTATION)
+
+ggplot(lines, aes(x=eval, y=mean, group = mutation, fill = mutation, color = mutation, shape = mutation)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(linewidth = 0.5) +
+  geom_point(data = filter(lines, eval %% 100000000 == 0 & eval != 0), size = 1.0, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+  ) +
+  scale_x_continuous(
+    name="Evaluation",
+    labels = c('0.0e+0', '5.0e+8','1.0e+9','1.5e+9'),
+    limits = c(0,1520000000)
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene coverage over time')+
+  p_theme +
+  guides(
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
+  )
+```
+
+### Final activation gene coverage
+
+Activation gene coverage found in the final population.
+
+```{r mut-act-fin-100, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 100 & eval == 1.5 * 10^9) %>%
+  ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.02, height = 0.0001), size = 1.5, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage"
+  ) +
+  scale_x_discrete(
+    name="Mutation"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final activation gene coverage')+
+  p_theme
+```
+
+#### Summary statistics
+
+```{r mut-act-fin-sts-100, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 100 & eval == 1.5 * 10^9) %>%
+  group_by(mutation) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(activation_coverage)),
+    min = min(activation_coverage, na.rm = TRUE),
+    median = median(activation_coverage, na.rm = TRUE),
+    mean = mean(activation_coverage, na.rm = TRUE),
+    max = max(activation_coverage, na.rm = TRUE),
+    IQR = IQR(activation_coverage, na.rm = TRUE)
+  )
+```
+
+#### Wilcoxon test
+
+```{r mut-act-fin-wil-100, message=FALSE, out.width="100%"}
+final_100 <- filter(over_time, pop_size == 100 & eval == 1.5 * 10^9)
+wilcox.test(final_100$activation_coverage ~ final_100$mutation,
+            paired = FALSE, conf.int = FALSE, alternative = 'l')
+```
+
+
+## Population size 500
+
+### Activation gene coverage over time
+
+Activation gene coverage found in each generation.
+
+```{r mut-act-ot-500, message=FALSE, out.width="100%"}
+# aggregate
+lines = filter(over_time, pop_size == 500 & eval > 0) %>%
+  group_by(mutation, eval) %>%
+  dplyr::summarise(
+    min = min(activation_coverage),
+    mean = mean(activation_coverage),
+    max = max(activation_coverage)
+  )
+lines$mutation <- factor(lines$mutation, levels = MUTATION)
+
+ggplot(lines, aes(x=eval, y=mean, group = mutation, fill = mutation, color = mutation, shape = mutation)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(linewidth = 0.5) +
+  geom_point(data = filter(lines, eval %% 100000000 == 0 & eval != 0), size = 1.0, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+  ) +
+  scale_x_continuous(
+    name="Evaluation",
+    labels = c('0.0e+0', '5.0e+8','1.0e+9','1.5e+9'),
+    limits = c(0,1520000000)
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene coverage over time')+
+  p_theme +
+  guides(
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
+  )
+```
+
+### Final activation gene coverage
+
+Activation gene coverage found in the final population.
+
+```{r mut-act-fin-500, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 500 & eval == 1.5 * 10^9) %>%
+  ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.02, height = 0.0001), size = 1.5, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage"
+  ) +
+  scale_x_discrete(
+    name="Mutation"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final activation gene coverage')+
+  p_theme
+```
+
+#### Summary statistics
+
+```{r mut-act-fin-sts-500, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 500 & eval == 1.5 * 10^9) %>%
+  group_by(mutation) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(activation_coverage)),
+    min = min(activation_coverage, na.rm = TRUE),
+    median = median(activation_coverage, na.rm = TRUE),
+    mean = mean(activation_coverage, na.rm = TRUE),
+    max = max(activation_coverage, na.rm = TRUE),
+    IQR = IQR(activation_coverage, na.rm = TRUE)
+  )
+```
+
+#### Wilcoxon test
+
+```{r mut-act-fin-wil-500, message=FALSE, out.width="100%"}
+final_500 <- filter(over_time, pop_size == 500 & eval == 1.5 * 10^9)
+wilcox.test(final_500$activation_coverage ~ final_100$mutation,
+            paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+## Population size 1000
+
+### Activation gene coverage over time
+
+Activation gene coverage found in each generation.
+
+```{r mut-act-ot-1000, message=FALSE, out.width="100%"}
+# aggregate
+lines = filter(over_time, pop_size == 1000 & eval > 0) %>%
+  group_by(mutation, eval) %>%
+  dplyr::summarise(
+    min = min(activation_coverage),
+    mean = mean(activation_coverage),
+    max = max(activation_coverage)
+  )
+lines$mutation <- factor(lines$mutation, levels = MUTATION)
+
+ggplot(lines, aes(x=eval, y=mean, group = mutation, fill = mutation, color = mutation, shape = mutation)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(linewidth = 0.5) +
+  geom_point(data = filter(lines, eval %% 100000000 == 0 & eval != 0), size = 1.0, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+  ) +
+  scale_x_continuous(
+    name="Evaluation",
+    labels = c('0.0e+0', '5.0e+8','1.0e+9','1.5e+9'),
+    limits = c(0,1520000000)
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene coverage over time')+
+  p_theme +
+  guides(
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Mutation'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
+  )
+```
+
+### Final activation gene coverage
+
+Activation gene coverage found in the final population.
+
+```{r mut-act-fin-1000, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 1000 & eval == 1.5 * 10^9) %>%
+  ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.02, height = 0.0001), size = 1.5, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage"
+  ) +
+  scale_x_discrete(
+    name="Mutation"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final activation gene coverage')+
+  p_theme
+```
+
+#### Summary statistics
+
+```{r mut-act-fin-sts-1000, message=FALSE, out.width="100%"}
+filter(over_time, pop_size == 1000 & eval == 1.5 * 10^9) %>%
+  group_by(mutation) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(activation_coverage)),
+    min = min(activation_coverage, na.rm = TRUE),
+    median = median(activation_coverage, na.rm = TRUE),
+    mean = mean(activation_coverage, na.rm = TRUE),
+    max = max(activation_coverage, na.rm = TRUE),
+    IQR = IQR(activation_coverage, na.rm = TRUE)
+  )
+```
+
+#### Wilcoxon test
+
+```{r mut-act-fin-wil-1000, message=FALSE, out.width="100%"}
+final_1000 <- filter(over_time, pop_size == 1000 & eval == 1.5 * 10^9)
+wilcox.test(final_1000$activation_coverage ~ final_100$mutation,
+            paired = FALSE, conf.int = FALSE, alternative = 't')
+```

@@ -30,7 +30,7 @@ Performance of the best solution in the population at each generation over time.
 
 ```{r con-200-act-ot, message=FALSE, out.width="100%"}
 # aggregate
-lines = over_time %>%
+lines = filter(over_time,eval != 0) %>%
   group_by(pop_size, eval) %>%
   dplyr::summarise(
     min = min(activation_coverage),
@@ -58,7 +58,7 @@ ggplot(lines, aes(x=eval, y=mean, group = pop_size, fill = pop_size, color = pop
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
-  ggtitle('Activation gene over time')+
+  ggtitle('Activation gene coverage over time')+
   p_theme +
   guides(
     shape=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
@@ -134,7 +134,7 @@ ggplot(best, aes(x = pop_size, y = coverage, color = pop_size, fill = pop_size, 
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
-  ggtitle('  Best satisfactory coverage')+
+  ggtitle('Best satisfactory coverage')+
   p_theme + coord_flip() +
   guides(
     shape=guide_legend(nrow=2, title.position = "left", title = 'Population\nSize'),
