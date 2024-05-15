@@ -38,7 +38,7 @@ over_time <- read.csv(paste(data_dir, 'ot.csv', sep = "", collapse = NULL), head
 over_time$pop_size <- factor(over_time$pop_size, levels = NAMES)
 
 # activation gene  coverage
-lines_ac = over_time %>%
+lines_ac = filter(over_time,eval != 0) %>%
   group_by(pop_size, eval) %>%
   dplyr::summarise(
     min = min(activation_coverage),
@@ -60,7 +60,7 @@ over_time_ac = ggplot(lines_ac, aes(x=eval, y=mean, group = pop_size, fill = pop
   scale_x_continuous(
     name="Evaluation",
     limits = c(0,1520000000)
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -73,7 +73,7 @@ over_time_ac = ggplot(lines_ac, aes(x=eval, y=mean, group = pop_size, fill = pop
   )
 
 # satisfactory trait coverage
-lines_sc = over_time %>%
+lines_sc = filter(over_time, eval != 0) %>%
   group_by(pop_size, eval) %>%
   dplyr::summarise(
     min = min(satisfactory_coverage),
@@ -127,11 +127,11 @@ best_plot = ggplot(best, aes(x = pop_size, y = coverage, color = pop_size, fill 
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('  Best satisfactory coverage')+
-  p_theme 
+  p_theme
 
 left_col = plot_grid(
   over_time_sc + ggtitle("Satifactory trait coverage over time") +
-    theme(legend.position = "none", axis.text.y = element_text(angle = 90, hjust = 0.5), axis.text.x = element_blank(), 
+    theme(legend.position = "none", axis.text.y = element_text(angle = 90, hjust = 0.5), axis.text.x = element_blank(),
           axis.title.x = element_blank(), axis.ticks.x = element_blank()),
   over_time_ac + ggtitle("Activation gene coverage over time") +
     theme(legend.position = "none", axis.text.y = element_text(angle = 90, hjust = 0.5)),

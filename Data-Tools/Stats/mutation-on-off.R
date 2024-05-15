@@ -68,7 +68,7 @@ filter(over_time, pop_size == 100 & eval == 1.5 * 10^9) %>%
     IQR = IQR(activation_coverage, na.rm = TRUE)
   )
 
-# wilcoxon test 
+# wilcoxon test
 final_100 <- filter(over_time, pop_size == 100 & eval == 1.5 * 10^9)
 # Yes > No: p = 6.163e-16
 wilcox.test(final_100$activation_coverage ~ final_100$mutation,
@@ -91,7 +91,7 @@ filter(over_time, pop_size == 500 & eval == 1.5 * 10^9) %>%
   )
 
 
-# wilcoxon test 
+# wilcoxon test
 final_500 <- filter(over_time, pop_size == 500 & eval == 1.5 * 10^9)
 # Yes > No: p < 2.2e-16
 wilcox.test(final_500$activation_coverage ~ final_500$mutation,

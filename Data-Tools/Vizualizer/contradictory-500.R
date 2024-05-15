@@ -38,7 +38,7 @@ over_time <- read.csv(paste(data_dir, 'ot.csv', sep = "", collapse = NULL), head
 over_time$pop_size <- factor(over_time$pop_size, levels = NAMES)
 
 # activation gene  coverage
-lines_ac = over_time %>%
+lines_ac = filter(over_time,eval != 0) %>%
   group_by(pop_size, eval) %>%
   dplyr::summarise(
     min = min(activation_coverage),
@@ -50,7 +50,7 @@ lines_ac$pop_size <- factor(lines_ac$pop_size, levels = NAMES)
 over_time_ac = ggplot(lines_ac, aes(x=eval, y=mean, group = pop_size, fill = pop_size, color = pop_size, shape = pop_size)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
   geom_line(size = 0.5) +
-  geom_point(data = filter(lines_ac, eval %% 50000000 == 0 & eval != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  geom_point(data = filter(lines_ac, eval %% 10^8 == 0 & eval != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -85,7 +85,7 @@ lines_sc$pop_size <- factor(lines_sc$pop_size, levels = NAMES)
 over_time_sc = ggplot(lines_sc, aes(x=eval, y=mean, group = pop_size, fill = pop_size, color = pop_size, shape = pop_size)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
   geom_line(size = 0.5) +
-  geom_point(data = filter(lines_sc, eval %% 50000000 == 0 & eval != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  geom_point(data = filter(lines_sc, eval %% 10^8 == 0 & eval != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 60),

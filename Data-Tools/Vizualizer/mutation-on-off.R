@@ -76,7 +76,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
   scale_x_continuous(
     name="Evaluation",
     limits = c(0,1520000000)
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -88,7 +88,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
     fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
   )
 
-# final population 
+# final population
 end_100 = filter(over_time, pop_size == 100 & eval == 1.5 * 10^9) %>%
   ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -107,7 +107,7 @@ end_100 = filter(over_time, pop_size == 100 & eval == 1.5 * 10^9) %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme 
+  p_theme
 
 
 
@@ -136,7 +136,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
   scale_x_continuous(
     name="Evaluation",
     limits = c(0,1520000000)
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -148,7 +148,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
     fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
   )
 
-# final population 
+# final population
 end_500 = filter(over_time, pop_size == 500 & eval == 1.5 * 10^9) %>%
   ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -167,7 +167,7 @@ end_500 = filter(over_time, pop_size == 500 & eval == 1.5 * 10^9) %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme 
+  p_theme
 
 
 # pop size 1000
@@ -195,7 +195,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
   scale_x_continuous(
     name="Evaluation",
     limits = c(0,1520000000)
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -207,7 +207,7 @@ ggplot(lines_ac, aes(x=eval, y=mean, group = mutation, fill = mutation, color = 
     fill=guide_legend(nrow=1, title.position = "left", title = 'Mutation')
   )
 
-# final population 
+# final population
 end_1000 = filter(over_time, pop_size == 1000 & eval == 1.5 * 10^9) %>%
   ggplot(., aes(x = mutation, y = activation_coverage, color = mutation, fill = mutation, shape = mutation)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -226,7 +226,7 @@ end_1000 = filter(over_time, pop_size == 1000 & eval == 1.5 * 10^9) %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme 
+  p_theme
 
 
 # combine all together
@@ -280,7 +280,3 @@ save_plot(
   base_width=13,
   base_height=5
 )
-
-
-
-

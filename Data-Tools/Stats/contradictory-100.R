@@ -10,7 +10,7 @@ library(dplyr)
 NAMES = c(50,100,500,1000,5000)
 data_dir <- 'Paper_Data/Contradictory-100/'
 
-# get best coverage data 
+# get best coverage data
 best <- read.csv(paste(data_dir, 'best.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
 best$pop_size <- factor(best$pop_size, levels = NAMES)
 
@@ -50,4 +50,3 @@ filter(ac_ot, eval == 1.5 * 10^9) %>%
     max = max(activation_coverage, na.rm = TRUE),
     IQR = IQR(activation_coverage, na.rm = TRUE)
   )
-
