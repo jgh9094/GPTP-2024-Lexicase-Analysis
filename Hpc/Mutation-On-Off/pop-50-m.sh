@@ -3,9 +3,9 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=2
 #SBATCH --array=1-50
-#SBATCH -t 219:00:00
+#SBATCH -t 336:00:00
 #SBATCH --mem=2GB
-#SBATCH --job-name=p50-n
+#SBATCH --job-name=p50-m
 #SBATCH -p moore,defq
 #SBATCH --exclude=esplhpc-cp040
 
@@ -19,7 +19,7 @@ conda activate gptp-2024
 ##################################
 # Setup random seed info
 ##################################
-EXPERIMENT_OFFSET=2050
+EXPERIMENT_OFFSET=2000
 SEED=$((SLURM_ARRAY_TASK_ID + EXPERIMENT_OFFSET))
 
 
@@ -37,9 +37,9 @@ POP_SIZE=50
 # Data dump directory
 ##################################
 
-DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/Coupon_Collector/No_Mutation/Pop_${POP_SIZE}/${REPLICATE_DIR}
+DATA_DIR=/home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Results_1/Coupon_Collector/Mutation/Pop_${POP_SIZE}/${REPLICATE_DIR}
 
-python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main-no-mut.py \
+python -O /home/hernandezj45/Repos/GPTP-2O24-FINAL/GPTP-2024-Lexicase-Analysis/Source/main.py \
 --diagnostic ${DIAGNOSTIC} \
 --pop_size ${POP_SIZE} \
 --redundancy ${REDUNDANCY} \
