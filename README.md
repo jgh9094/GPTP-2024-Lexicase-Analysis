@@ -1,6 +1,6 @@
 # Lexidate validation evaluation strategy
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11199990.svg)](https://doi.org10.5281/zenodo.11199990)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11199990.svg)](https://doi.org/10.5281/zenodo.11199990)
 [![supplemental](https://img.shields.io/badge/go_to-supplementary_material-98111e)](https://jgh9094.github.io/GPTP-2024-Lexicase-Analysis/Bookdown/Pages/)
 [![data](https://img.shields.io/badge/go_to-data-98111e)](https://osf.io/g5u9p/)
 
