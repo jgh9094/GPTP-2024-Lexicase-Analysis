@@ -1,5 +1,5 @@
 ---
-title: "Supplemental Material for 'Hidden Lexicase Selection Parameters: Varying Population Size and Test Case Redundancy with Diagnostic Metrics'"
+title: "Supplemental Material for 'Lexicase Selection Parameter Analysis: Varying Population Size and Test Case Redundancy with Diagnostic Metrics'"
 author: "Jose Guadalupe Hernandez, Anil Kumar Saini, Jason H. Moore"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
@@ -59,7 +59,6 @@ Our supplemental material includes the following:
 
 - Exploitation rate results (Section \@ref(exploitation-rate-results))
 - Standard contradictory rates results (Section \@ref(contradictory-objectives-100-results))
-- Mutation On and Off results (Section \@ref(mutation-on-and-off))
 - Contradictory rates results w/ 100 redundant test cases (Section \@ref(contradictory-objectives-200-results))
 - Contradictory rates results w/ 200 redundant test cases (Section \@ref(contradictory-objectives-300-results))
 - Contradictory rates results w/ 400 redundant test cases (Section \@ref(contradictory-objectives-500-results))
