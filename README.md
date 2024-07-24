@@ -1,5 +1,10 @@
 # Lexidate validation evaluation strategy
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11199990.svg)](https://doi.org10.5281/zenodo.11199990)
+[![supplemental](https://img.shields.io/badge/go_to-supplementary_material-98111e)](https://jgh9094.github.io/GPTP-2024-Lexicase-Analysis/Bookdown/Pages/)
+[![data](https://img.shields.io/badge/go_to-data-98111e)](https://osf.io/g5u9p/)
+
+
 ## Authors
 
 - [Jose Guadalupe Hernandez](https://jgh9094.github.io/)
@@ -14,14 +19,13 @@ NOTE: Data is still being generated.
 
 ### Abstract
 
-> Lexicase selection is a parent selection method in genetic programming that has been shown to outperform other methods across multiple benchmark tasks.
-In contrast to other selection methods with required parameters, such as tournament selection, lexicase operates without explicit parameters.
-However, if parameters like population size and the number of generations can affect any selection method, then lexicase's performance can also be affected by these 'hidden' parameters.
-Here, we study the effects of these hidden parameters on lexicase's ability to exploit gradients and specialist maintenance using a set of diagnostic metrics.
+> Lexicase selection is a successful parent selection method in genetic programming that has outperformed other methods across multiple benchmark suites.
+Unlike other selection methods that require explicit parameters to function, such as tournament size in tournament selection, lexicase selection does not.
+However, if evolutionary parameters like population size and number of generations affect the effectiveness of a selection method, then lexicase's performance may also be impacted by these `hidden' parameters.
+Here, we study how these hidden parameters affect lexicase's ability to exploit gradients and maintain specialists using diagnostic metrics from an existing benchmark suite that measures a selection scheme's ability to exploit and explore handcrafted search spaces.
 By varying the population size with a fixed evaluation budget, we show that smaller populations tend to have greater exploitation capabilities, whereas larger populations tend to maintain more specialists.
 We also consider the effect redundant test cases have on specialist maintenance, and find that high redundancy may hinder the ability to optimize and maintain specialists, even for larger populations.
-Additionally, we find that mutation affects specialist maintenance for smaller population sizes but not larger ones.
-Ultimately, we highlight that population size must be carefully considered for the characteristics of the problem being solved.
+Ultimately, we highlight that the interaction between population size, evaluation budget, and test cases must be carefully considered for the characteristics of the problem being solved.
 
 ## Repository guide
 
